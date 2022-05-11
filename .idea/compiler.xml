@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="match-manager" />
+        <module name="match-manager-system" />
       </profile>
     </annotationProcessing>
   </component>
