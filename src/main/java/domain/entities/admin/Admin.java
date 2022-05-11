@@ -1,9 +1,10 @@
 package domain.entities.admin;
 
 public class Admin {
+    private String name;
     private String login;
     private String password;
-    
+
     public Championship championshipSearch() {}
     public void createChampionship() {}
     public void changeChampionship() {}
