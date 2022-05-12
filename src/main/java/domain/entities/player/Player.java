@@ -3,9 +3,9 @@ package domain.entities.player;
 public class Player {
     private String name;
     private String cpf;
-    private Gender gender;
+    private GenderEnum gender;
 
-    public Player(String name, String cpf, Gender gender) {
+    public Player(String name, String cpf, GenderEnum gender) {
         this.name = name;
         this.cpf = cpf;
         this.gender = gender;
@@ -27,11 +27,11 @@ public class Player {
         this.cpf = cpf;
     }
 
-    public Gender getGender() {
+    public GenderEnum getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(GenderEnum gender) {
         this.gender = gender;
     }
 

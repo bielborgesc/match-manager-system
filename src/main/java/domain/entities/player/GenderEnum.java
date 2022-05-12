@@ -1,12 +1,12 @@
 package domain.entities.player;
 
-public enum Gender {
+public enum GenderEnum {
     M("Male"),
     F("Famale");
 
     private String gender;
 
-    Gender(String sexo){
+    GenderEnum(String sexo){
         this.gender = sexo;
     }
 
