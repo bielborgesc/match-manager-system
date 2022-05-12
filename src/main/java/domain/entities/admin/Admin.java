@@ -1,5 +1,7 @@
 package domain.entities.admin;
 
+import domain.entities.championship.Championship;
+
 public class Admin {
     private String name;
     private String login;
