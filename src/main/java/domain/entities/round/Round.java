@@ -2,11 +2,11 @@ package domain.entities.round;
 
 import domain.entities.match.Match;
 
-import java.util.LinkedList;
+import java.util.HashMap;
 
 public class Round {
     private int id;
-    private LinkedList<Match> match;
+    private HashMap<Integer, Match> match;
 
     public Round(int id) {
         this.id = id;
@@ -20,11 +20,11 @@ public class Round {
         this.id = id;
     }
 
-    public LinkedList<Match> getMatch() {
-        return match;
+    public Integer getMatch(Match match) {
+        return match.getId();
     }
 
     public void setMatch(Match match) {
-        this.match.add(match);
+        this.match.put(match.getId(), match);
     }
 }

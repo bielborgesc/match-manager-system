@@ -4,11 +4,19 @@ public class Player {
     private String name;
     private String cpf;
     private GenderEnum gender;
+    private StatusEnum status = StatusEnum.AVAILABLE;
 
     public Player(String name, String cpf, GenderEnum gender) {
         this.name = name;
         this.cpf = cpf;
         this.gender = gender;
+    }
+
+    public Player(String name, String cpf, GenderEnum gender, StatusEnum statusEnum) {
+        this.name = name;
+        this.cpf = cpf;
+        this.gender = gender;
+        this.status = statusEnum;
     }
 
     public String getName() {
@@ -33,6 +41,13 @@ public class Player {
 
     public void setGender(GenderEnum gender) {
         this.gender = gender;
+    }
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package domain.entities.championship;
 
-import domain.entities.modality.Modality;
 import domain.entities.team.Team;
 
 import java.util.Date;
@@ -11,15 +10,27 @@ public class Championship {
     private int id;
     private String name;
     private Date date;
-
-    private Modality modality;
-
     private HashMap<Integer, Team> teams;
+    private TypeEnum typeEnum;
+    private CategoryEnum categoryEnum;
+    //TODO rodadas;
 
-    public Championship(int id, String name, Date date) {
+
+    public Championship(int id, String name, Date date, TypeEnum typeEnum, CategoryEnum categoryEnum) {
         this.id = id;
         this.name = name;
         this.date = date;
+        this.typeEnum = typeEnum;
+        this.categoryEnum = categoryEnum;
+    }
+
+    public Championship(int id, String name, Date date, HashMap<Integer, Team> teams, TypeEnum typeEnum, CategoryEnum categoryEnum) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.teams = teams;
+        this.typeEnum = typeEnum;
+        this.categoryEnum = categoryEnum;
     }
 
     public int getId() {
@@ -46,19 +57,28 @@ public class Championship {
         this.date = date;
     }
 
-    public Modality getModality() {
-        return modality;
-    }
-
-    public void setModality(Modality modality) {
-        this.modality = modality;
-    }
-
-    public Team getTeam(Team team) {
-        return this.teams.get(team.getId());
+    public Team getTeam(Integer id) {
+        return this.teams.get(id);
     }
 
     public void setTeam(Team team) {
         this.teams.put(team.getId(), team);
     }
+
+    public TypeEnum getTypeEnum() {
+        return typeEnum;
+    }
+
+    public void setTypeEnum(TypeEnum typeEnum) {
+        this.typeEnum = typeEnum;
+    }
+
+    public CategoryEnum getCategoryEnum() {
+        return categoryEnum;
+    }
+
+    public void setCategoryEnum(CategoryEnum categoryEnum) {
+        this.categoryEnum = categoryEnum;
+    }
+
 }

@@ -1,4 +1,4 @@
-package domain.entities.modality;
+package domain.entities.championship;
 
 public enum TypeEnum {
     FUTEBOL("Futebol"),

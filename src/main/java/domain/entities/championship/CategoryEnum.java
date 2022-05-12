@@ -1,7 +1,7 @@
 package domain.entities.championship;
 
 public enum CategoryEnum {
-    CHILDISH("childish"),
+    CHILDISH("Childish"),
     JUVENILE("Juvenile"),
     ADULT("Adult");
 

@@ -1,19 +1,27 @@
 package domain.entities.team;
 
-import domain.entities.classification.Classification;
+import domain.entities.score.Score;
 import domain.entities.player.Player;
+import domain.entities.player.StatusEnum;
+import domain.utils.exceptions.UnavailablePlayer;
 
-import java.util.LinkedList;
+import java.util.HashMap;
 
 public class Team {
     private int Id;
     private String name;
-    private Classification classification;
-    private LinkedList<Player> players;
+    private Score score;
+    private HashMap<String, Player> players = new HashMap<String, Player>();
 
     public Team(int id, String name) {
         Id = id;
         this.name = name;
+    }
+
+    public Team(int id, String name, HashMap<String, Player> players) {
+        Id = id;
+        this.name = name;
+        this.players = players;
     }
 
     public int getId() {
@@ -32,27 +40,37 @@ public class Team {
         this.name = name;
     }
 
-    public Classification getClassification() {
-        return classification;
+    public Score getClassification() {
+        return score;
     }
 
-    public void addWins(int countWin) {
-        this.classification.setWins(countWin);
+    public void addWins() {
+        this.score.setWins();
     }
 
-    public void addLoser(int countLose) {
-        this.classification.setLoses(countLose);
+    public void addLoser() {
+        this.score.setLoses();
     }
 
-    public void addWin(int countEven) {
-        this.classification.setEven(countEven);
+    public void addEven() {
+        this.score.setEven();
     }
 
-    public LinkedList<Player> getPlayers() {
-        return players;
+    public Player getPlayers(String cpf) {
+        return this.players.get(cpf);
     }
 
     public void setPlayers(Player player) {
-        this.players.add(player);
+        try {
+            if (StatusEnum.AVAILABLE.compareTo(player.getStatus()) == 0) {
+                players.put(player.getCpf(), player);
+                player.setStatus(StatusEnum.UNAVAILABLE);
+                return;
+            }
+            throw new UnavailablePlayer();
+        } catch (UnavailablePlayer e){
+            e.printStackTrace();
+        }
+        this.players.put(player.getCpf(), player);
     }
 }

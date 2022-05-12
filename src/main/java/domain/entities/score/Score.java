@@ -1,11 +1,11 @@
-package domain.entities.classification;
+package domain.entities.score;
 
-public class Classification {
+public class Score {
     private int wins;
     private int loses;
     private int even;
 
-    public Classification() {
+    public Score() {
         wins = 0;
         loses = 0;
         even = 0;
@@ -15,24 +15,24 @@ public class Classification {
         return wins;
     }
 
-    public void setWins(int wins) {
-        this.wins += wins;
+    public void setWins() {
+        this.wins += 1;
     }
 
     public int getLoses() {
         return loses;
     }
 
-    public void setLoses(int loses) {
-        this.loses += loses;
+    public void setLoses() {
+        this.loses += 1;
     }
 
     public int getEven() {
         return even;
     }
 
-    public void setEven(int even) {
-        this.even += even;
+    public void setEven() {
+        this.even += 1;
     }
 
     @Override
