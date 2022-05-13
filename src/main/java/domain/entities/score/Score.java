@@ -1,11 +1,13 @@
 package domain.entities.score;
 
 public class Score {
+    private int idTeam;
     private int wins;
     private int loses;
     private int even;
 
-    public Score() {
+    public Score(int idTeam) {
+        this.idTeam = idTeam;
         wins = 0;
         loses = 0;
         even = 0;
