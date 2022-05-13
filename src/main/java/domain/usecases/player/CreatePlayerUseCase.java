@@ -11,7 +11,7 @@ public class CreatePlayerUseCase {
     }
 
     public String insert(Player player) throws EntityAlreadyExistsException {
-        if(playerDAO.findOne(player.getCpf()).isEmpty()){
+        if(playerDAO.findOne(player.getCpf()).isPresent()){
             throw new EntityAlreadyExistsException("Entity already exists");
         }
         return playerDAO.crete(player);
