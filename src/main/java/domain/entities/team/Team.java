@@ -3,7 +3,7 @@ package domain.entities.team;
 import domain.entities.score.Score;
 import domain.entities.player.Player;
 import domain.entities.player.StatusEnum;
-import domain.utils.exceptions.UnavailablePlayer;
+
 
 import java.util.HashMap;
 

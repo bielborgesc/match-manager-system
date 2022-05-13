@@ -3,7 +3,7 @@ package domain.utils.dao;
 import java.util.List;
 import java.util.Optional;
 
-public interface DAO<T, K> {
+public interface DAO<K, T> {
     K crete(T type);
     Optional<T> findOne(K type);
     List<T> findAll();
