@@ -4,7 +4,6 @@ import domain.entities.score.Score;
 import domain.entities.player.Player;
 import domain.entities.player.StatusEnum;
 
-
 import java.util.HashMap;
 
 public class Team {
@@ -60,17 +59,17 @@ public class Team {
         return this.players.get(cpf);
     }
 
-    public void setPlayers(Player player) {
-        try {
-            if (StatusEnum.AVAILABLE.compareTo(player.getStatus()) == 0) {
-                players.put(player.getCpf(), player);
-                player.setStatus(StatusEnum.UNAVAILABLE);
-                return;
-            }
-            throw new UnavailablePlayer();
-        } catch (UnavailablePlayer e){
-            e.printStackTrace();
-        }
-        this.players.put(player.getCpf(), player);
-    }
+//    public void setPlayers(Player player) {
+//        try {
+//            if (StatusEnum.AVAILABLE.compareTo(player.getStatus()) == 0) {
+//                players.put(player.getCpf(), player);
+//                player.setStatus(StatusEnum.UNAVAILABLE);
+//                return;
+//            }
+//            throw new UnavailablePlayer();
+//        } catch (UnavailablePlayer e){
+//            e.printStackTrace();
+//        }
+//        this.players.put(player.getCpf(), player);
+//    }
 }
