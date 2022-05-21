@@ -13,6 +13,14 @@ public class Score {
         even = 0;
     }
 
+    public int getIdTeam() {
+        return idTeam;
+    }
+
+    public void setIdTeam(int idTeam) {
+        this.idTeam = idTeam;
+    }
+
     public int getWinds() {
         return wins;
     }

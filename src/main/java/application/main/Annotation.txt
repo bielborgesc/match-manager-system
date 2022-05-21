@@ -1,0 +1,5 @@
+AddPlayerInTeamUseCase
+RemovePlayerInTeamUseCase
+
+AddTeamInChampionshipUseCase
+RemoveTeamInChampionshipUseCase

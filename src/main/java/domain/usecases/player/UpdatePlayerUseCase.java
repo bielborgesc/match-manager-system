@@ -1,7 +1,7 @@
 package domain.usecases.player;
 
 import domain.entities.player.Player;
-import domain.utils.exceptions.EntityNotFoundException;
+import domain.usecases.utils.exceptions.EntityNotFoundException;
 
 public class UpdatePlayerUseCase {
     private PlayerDAO playerDAO;
@@ -10,7 +10,7 @@ public class UpdatePlayerUseCase {
         this.playerDAO = playerDAO;
     }
 
-    public boolean update(Player player){
+    public boolean update(Player player) {
         String cpf = player.getCpf();
         if(playerDAO.findOne(cpf).isEmpty())
             throw new EntityNotFoundException("Player not found.");

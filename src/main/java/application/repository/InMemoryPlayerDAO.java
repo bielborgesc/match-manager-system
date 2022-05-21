@@ -10,7 +10,7 @@ public class InMemoryPlayerDAO implements PlayerDAO {
     private static final Map<String, Player> db = new LinkedHashMap<>();
 
     @Override
-    public String crete(Player player) {
+    public String create(Player player) {
         db.put(player.getCpf(), player);
         return player.getCpf();
     }

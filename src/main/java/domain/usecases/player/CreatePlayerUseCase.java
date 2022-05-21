@@ -1,7 +1,7 @@
 package domain.usecases.player;
 
 import domain.entities.player.Player;
-import domain.utils.exceptions.EntityAlreadyExistsException;
+import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 
 public class CreatePlayerUseCase {
     private PlayerDAO playerDAO;
@@ -14,7 +14,7 @@ public class CreatePlayerUseCase {
         if(playerDAO.findOne(player.getCpf()).isPresent()){
             throw new EntityAlreadyExistsException("Entity already exists");
         }
-        return playerDAO.crete(player);
+        return playerDAO.create(player);
     }
 
 }

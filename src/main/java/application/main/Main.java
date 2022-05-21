@@ -5,7 +5,7 @@ import application.repository.InMemoryPlayerDAO;
 import domain.entities.player.GenderEnum;
 import domain.entities.player.Player;
 import domain.usecases.player.*;
-import domain.utils.exceptions.EntityAlreadyExistsException;
+import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 
 public class Main {
 
@@ -26,7 +26,19 @@ public class Main {
         createPlayerUseCase.insert(player2);
         createPlayerUseCase.insert(player3);
         createPlayerUseCase.insert(player4);
-        
+
+        System.out.println(findPlayerUseCase.findOne("46201548"));
+
+        Player playerUp = new Player("Jackson Almeida", player1.getCpf(), GenderEnum.M);
+        updatePlayerUseCase.update(playerUp);
+        System.out.println(findPlayerUseCase.findOne("46201548"));
+        removePlayerUseCase.remove(player1.getCpf());
+        System.out.println(findPlayerUseCase.findOne("46201548"));
+
+
+
+
+
     }
 
     private static void configureInjection() {
