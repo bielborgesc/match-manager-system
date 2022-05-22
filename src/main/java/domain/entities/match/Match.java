@@ -8,6 +8,7 @@ public class Match {
     private Team teamB;
     private int teamPointsA;
     private int teamPointsB;
+    private boolean isFinished = false; // Realizada e não realizada
 
     public Match(Team teamA, Team teamB) {
         this.teamA = teamA;
@@ -26,9 +27,13 @@ public class Match {
         return teamA;
     }
 
-
     public Team getTeamB() {
         return teamB;
+    }
+
+    public void setTeams(Team teamA, Team teamB) {
+        this.teamA = teamA;
+        this.teamB = teamB;
     }
 
     public int getTeamPointsA() {
@@ -43,6 +48,14 @@ public class Match {
         this.teamPointsA = teamPointsA;
         this.teamPointsB = teamPointsB;
         this.setScore();
+    }
+
+    public boolean getStatus() {
+        return this.isFinished;
+    }
+
+    public void setStatus(boolean bool) {
+        this.isFinished = bool;
     }
 
     public void setScore(){

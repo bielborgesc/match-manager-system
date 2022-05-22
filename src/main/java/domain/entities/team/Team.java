@@ -59,17 +59,15 @@ public class Team {
         return this.players.get(cpf);
     }
 
-//    public void setPlayers(Player player) {
-//        try {
-//            if (StatusEnum.AVAILABLE.compareTo(player.getStatus()) == 0) {
-//                players.put(player.getCpf(), player);
-//                player.setStatus(StatusEnum.UNAVAILABLE);
-//                return;
-//            }
-//            throw new UnavailablePlayer();
-//        } catch (UnavailablePlayer e){
-//            e.printStackTrace();
-//        }
-//        this.players.put(player.getCpf(), player);
-//    }
+    public void addPlayer(Player player) {
+        players.put(player.getCpf(), player);
+        player.setStatus(StatusEnum.UNAVAILABLE);
+        this.players.put(player.getCpf(), player);
+    }
+
+    public void removePlayer(Player player) {
+        players.remove(player.getCpf(), player);
+        player.setStatus(StatusEnum.AVAILABLE);
+        this.players.remove(player.getCpf(), player);
+    }
 }
