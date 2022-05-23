@@ -27,6 +27,7 @@ public class InMemoryPlayerDAO implements PlayerDAO {
         return new ArrayList<>(db.values());
     }
 
+
     @Override
     public boolean update(Player player) {
         String cpf = player.getCpf();
@@ -50,4 +51,5 @@ public class InMemoryPlayerDAO implements PlayerDAO {
     public boolean delete(Player player) {
         return deleteByKey(player.getCpf());
     }
+
 }

@@ -59,15 +59,28 @@ public class Team {
         return this.players.get(cpf);
     }
 
-    public void addPlayer(Player player) {
+    public Integer addPlayer(Player player) {
         players.put(player.getCpf(), player);
         player.setStatus(StatusEnum.UNAVAILABLE);
         this.players.put(player.getCpf(), player);
+        return null;
     }
 
-    public void removePlayer(Player player) {
+    public Integer removePlayer(Player player) {
         players.remove(player.getCpf(), player);
         player.setStatus(StatusEnum.AVAILABLE);
         this.players.remove(player.getCpf(), player);
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Team{");
+        sb.append("Id=").append(Id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", score=").append(score);
+        sb.append(", players=").append(players);
+        sb.append('}');
+        return sb.toString();
     }
 }

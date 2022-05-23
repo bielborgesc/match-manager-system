@@ -1,20 +1,21 @@
-package domain.usecases.score;
+package domain.usecases.match;
 
-import domain.entities.score.Score;
+import domain.entities.match.Match;
+import domain.entities.team.Team;
 import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 
 public class CreateMatchUseCase {
-    private MatchDAO matchDAO;
-    private TeamDAO firstTeamDAO;
-    private TeamDAO secondTeamDAO;
+    private Match match;
+    private Team firstTeam;
+    private Team secondTeam;
 
-    public CreateScoreUseCase(MatchDAO matchDAO, TeamDAO firstTeamDAO, TeamDAO secondTeamDAO) {
-        this.matchDAO = matchDAO;
-        this.firstTeamDAO = firstTeamDAO;
-        this.secondTeamDAO = secondTeamDAO;
+    public CreateMatchUseCase(Match match, Team firstTeam, Team secondTeam) {
+        this.match = match;
+        this.firstTeam = firstTeam;
+        this.secondTeam = secondTeam;
     }
 
-    public Integer addTeamsInMatch() throws EntityAlreadyExistsException {
-        return matchDAO.setTeams(this.firstTeamDAO, this.secondTeamDAO);
+    public void addTeamsInMatch() throws EntityAlreadyExistsException {
+        match.setTeams(this.firstTeam, this.secondTeam);
     }
 }
