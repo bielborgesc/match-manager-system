@@ -10,10 +10,7 @@ import domain.entities.player.GenderEnum;
 import domain.entities.player.Player;
 import domain.entities.score.Score;
 import domain.entities.team.Team;
-import domain.usecases.match.CreateMatchUseCase;
-import domain.usecases.match.FindMatchUseCase;
-import domain.usecases.match.MatchDAO;
-import domain.usecases.match.SetTeamPointsUseCase;
+import domain.usecases.match.*;
 import domain.usecases.player.*;
 import domain.usecases.score.*;
 import domain.usecases.team.*;
@@ -46,6 +43,7 @@ public class Main {
     private static CreateMatchUseCase createMatchUseCase;
     private static FindMatchUseCase findMatchUseCase;
     private static SetTeamPointsUseCase setTeamPointsUseCase;
+    private static FindMatchByIdTeamUseCase findMatchByIdTeamUseCase;
 
     public static void main(String[] args) throws EntityAlreadyExistsException, UnavailablePlayerException {
         configureInjection();
@@ -112,8 +110,10 @@ public class Main {
         //ADICIONAR SCORE NOS TIMES
         Score scoreTeam1 = new Score(team1.getId());
         Score scoreTeam2 = new Score(team2.getId());
+        Score scoreTeam3 = new Score(teamDel.getId());
         createScoreUseCase.insert(scoreTeam1);
         createScoreUseCase.insert(scoreTeam2);
+        createScoreUseCase.insert(scoreTeam3);
 
         //LISTAR SCORE DO TIME
 //        System.out.println(findScoreUseCase.findOne(team1.getId()));
@@ -134,21 +134,30 @@ public class Main {
         //CREATE MATCH
         Match match1 = new Match(1, findTeamUseCase.findOne(1).get(), findTeamUseCase.findOne(2).get());
         Match match2 = new Match(2, findTeamUseCase.findOne(2).get(), findTeamUseCase.findOne(1).get());
+        Match matchTest = new Match(3, findTeamUseCase.findOne(3).get(), findTeamUseCase.findOne(2).get());
 
         createMatchUseCase.addMatch(match1);
         createMatchUseCase.addMatch(match2);
+        createMatchUseCase.addMatch(matchTest);
 //        System.out.println(findMatchUseCase.findAll());
 
         //DEFININDO PONTUAÇÃO DA PARTIDA
         match1.setTeamPoints(1,2);
         match2.setTeamPoints(3,3);
+        matchTest.setTeamPoints(1,2);
         setTeamPointsUseCase.setTeamPoints(match2);
         setTeamPointsUseCase.setTeamPoints(match1);
-        System.out.println(findMatchUseCase.findAll());
-        System.out.println(findScoreUseCase.findOne(team1.getId()));
-        System.out.println(findScoreUseCase.findOne(team2.getId()));
+        setTeamPointsUseCase.setTeamPoints(matchTest);
+//        System.out.println(findMatchUseCase.findAll());
+//        System.out.println(findScoreUseCase.findOne(team1.getId()));
+//        System.out.println(findScoreUseCase.findOne(team2.getId()));
 
         //BUSCAR PARTIDA PELO ID DO TIME
+//        System.out.println(findMatchByIdTeamUseCase.findMatchByIdTeam(team1.getId()));
+//        System.out.println(findMatchByIdTeamUseCase.findMatchByIdTeam(teamDel.getId()));
+//        System.out.println(findMatchByIdTeamUseCase.findMatchByIdTeam(team2.getId()));
+
+
 
     }
 
@@ -180,6 +189,7 @@ public class Main {
         createMatchUseCase = new CreateMatchUseCase(matchDAO);
         findMatchUseCase = new FindMatchUseCase(matchDAO);
         setTeamPointsUseCase = new SetTeamPointsUseCase(matchDAO, scoreDAO);
+        findMatchByIdTeamUseCase = new FindMatchByIdTeamUseCase(matchDAO, teamDAO);
 
     }
 
