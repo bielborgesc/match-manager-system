@@ -12,6 +12,8 @@ import domain.usecases.team.*;
 import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 import domain.usecases.utils.exceptions.UnavailablePlayerException;
 
+import java.util.Optional;
+
 public class Main {
 
     private static CreatePlayerUseCase createPlayerUseCase;
@@ -65,21 +67,19 @@ public class Main {
         updateTeamUseCase.update(team1Up);
         System.out.println(findTeamUseCase.findOne(1));
 
-        addPlayerInTeamUseCase.addPlayerInTeam(player1, team1.getId());
-        addPlayerInTeamUseCase.addPlayerInTeam(player2, team1.getId());
-        addPlayerInTeamUseCase.addPlayerInTeam(player3, team2.getId());
-        System.out.println(player4.getIdTeam());
-        addPlayerInTeamUseCase.addPlayerInTeam(player4, team2.getId());
-        System.out.println(player4.getIdTeam());
-        addPlayerInTeamUseCase.addPlayerInTeam(player4, teamDel.getId());
-        System.out.println(player4.getIdTeam());
+        addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player1), team1.getId());
+        addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player2), team1.getId());
+        addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player3), team2.getId());
+        addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player4), team2.getId());
+//        addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player4), teamDel.getId());
+
+        System.out.println(findPlayerUseCase.findAll());
 
 //        System.out.println(findTeamUseCase.findAll());
 //        removeTeamUseCase.remove(teamDel);
 //        System.out.println(findTeamUseCase.findAll());
-
-
     }
+
 
 
     private static void configureInjection() {
