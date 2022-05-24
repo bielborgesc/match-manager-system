@@ -3,6 +3,7 @@ package domain.usecases.player;
 import domain.entities.player.Player;
 
 import java.util.List;
+import java.util.Optional;
 
 public class FindPlayerUseCase {
     private PlayerDAO playerDAO;
@@ -11,7 +12,7 @@ public class FindPlayerUseCase {
         this.playerDAO = playerDAO;
     }
 
-    public Player findOne(String cpf){
+    public Optional<Player> findOne(String cpf){
         if(cpf == null) {
             throw new IllegalArgumentException("Argument provided is not valid");
         }
