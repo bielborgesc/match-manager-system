@@ -43,11 +43,11 @@ public class Main {
         createPlayerUseCase.insert(player4);
 
 //        System.out.println(findPlayerUseCase.findOne("46201548"));
-//
-//        Player playerUp = new Player("Jackson Almeida", player1.getCpf(), GenderEnum.M);
-//        updatePlayerUseCase.update(playerUp);
+        Player playerUp = new Player("Jackson Almeida", player1.getCpf(), GenderEnum.M);
+        updatePlayerUseCase.update(playerUp);
 //        System.out.println(findPlayerUseCase.findOne("46201548"));
-//        removePlayerUseCase.remove(player1.getCpf());
+
+        removePlayerUseCase.remove(player1.getCpf());
 //        System.out.println(findPlayerUseCase.findOne("46201548"));
 
 
@@ -60,23 +60,23 @@ public class Main {
         createTeamUseCase.insert(team2);
         createTeamUseCase.insert(teamDel);
 
-        System.out.println(findTeamUseCase.findOne(1));
+//        System.out.println(findTeamUseCase.findOne(1));
         Team team1Up = new Team(1,"Angularizando");
         updateTeamUseCase.update(team1Up);
-        System.out.println(findTeamUseCase.findOne(1));
+//        System.out.println(findTeamUseCase.findOne(1));
 
-        addPlayerInTeamUseCase.addPlayerInTeam(player1, team1.getId());
-        addPlayerInTeamUseCase.addPlayerInTeam(player2, team1.getId());
-        addPlayerInTeamUseCase.addPlayerInTeam(player3, team2.getId());
-        System.out.println(player4.getIdTeam());
-        addPlayerInTeamUseCase.addPlayerInTeam(player4, team2.getId());
-        System.out.println(player4.getIdTeam());
-        addPlayerInTeamUseCase.addPlayerInTeam(player4, teamDel.getId());
-        System.out.println(player4.getIdTeam());
+        addPlayerInTeamUseCase.addPlayerInTeam(findPlayerUseCase.findOne(player1.getCpf()), team1.getId());
+        addPlayerInTeamUseCase.addPlayerInTeam(findPlayerUseCase.findOne(player2.getCpf()), team1.getId());
+        addPlayerInTeamUseCase.addPlayerInTeam(findPlayerUseCase.findOne(player3.getCpf()), team2.getId());
+        System.out.println(findPlayerUseCase.findOne(player4.getCpf()));
+        addPlayerInTeamUseCase.addPlayerInTeam(findPlayerUseCase.findOne(player4.getCpf()), team2.getId());
+        System.out.println(findPlayerUseCase.findOne(player4.getCpf()));
+        addPlayerInTeamUseCase.addPlayerInTeam(findPlayerUseCase.findOne(player4.getCpf()), teamDel.getId());
+        System.out.println(findPlayerUseCase.findOne(player4.getCpf()));
 
-//        System.out.println(findTeamUseCase.findAll());
-//        removeTeamUseCase.remove(teamDel);
-//        System.out.println(findTeamUseCase.findAll());
+        System.out.println(findTeamUseCase.findAll());
+        removeTeamUseCase.remove(teamDel);
+        System.out.println(findTeamUseCase.findAll());
 
 
     }
