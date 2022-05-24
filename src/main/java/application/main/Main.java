@@ -62,22 +62,32 @@ public class Main {
         createTeamUseCase.insert(team2);
         createTeamUseCase.insert(teamDel);
 
-        System.out.println(findTeamUseCase.findOne(1));
+//        System.out.println(findTeamUseCase.findOne(1));
         Team team1Up = new Team(1,"Angularizando");
         updateTeamUseCase.update(team1Up);
-        System.out.println(findTeamUseCase.findOne(1));
+//        System.out.println(findTeamUseCase.findOne(1));
 
+        // ADD PLAYER IN TEAM
         addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player1), team1.getId());
         addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player2), team1.getId());
         addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player3), team2.getId());
         addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player4), team2.getId());
 //        addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player4), teamDel.getId());
 
-        System.out.println(findPlayerUseCase.findAll());
+//        System.out.println(findPlayerUseCase.findAll());
+//        System.out.println(findTeamUseCase.findAll());
+//        System.out.println(findAllPlayersInTeamUseCase.findAllPlayersInTeam(team1.getId()));
 
+        // REMOVE TEAM
 //        System.out.println(findTeamUseCase.findAll());
 //        removeTeamUseCase.remove(teamDel);
 //        System.out.println(findTeamUseCase.findAll());
+
+        // Buscando player pelo idTeam
+//        System.out.println(findOnePlayerInTeamUseCase.findOnePlayerInTeam(player1.getCpf(), team1.getId()));
+
+        
+
     }
 
 
@@ -89,6 +99,8 @@ public class Main {
         updatePlayerUseCase = new UpdatePlayerUseCase(playerDAO);
         removePlayerUseCase = new RemovePlayerUseCase(playerDAO);
         addPlayerInTeamUseCase = new AddPlayerInTeamUseCase(playerDAO);
+        findAllPlayersInTeamUseCase = new FindAllPlayersInTeamUseCase(playerDAO);
+        findOnePlayerInTeamUseCase = new FindOnePlayerInTeamUseCase(playerDAO);
 
         TeamDAO teamDAO = new InMemoryTeamDAO();
         createTeamUseCase = new CreateTeamUseCase(teamDAO);

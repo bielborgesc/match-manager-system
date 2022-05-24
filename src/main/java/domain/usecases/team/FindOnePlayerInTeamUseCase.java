@@ -16,11 +16,7 @@ public class FindOnePlayerInTeamUseCase {
   }
 
   public Player findOnePlayerInTeam(String cpf, Integer idTeam) {
-    LinkedHashMap<String, Player> playersInTeam = (LinkedHashMap<String, Player>) playerDAO.findAll();
-    for (Player player : playersInTeam.values()) {
-        if(Objects.equals(player.getCpf(), cpf)) return player;
-    }
-    return null;
+    return playerDAO.findPlayersByIdTeam(cpf, idTeam);
   }
 
 }
