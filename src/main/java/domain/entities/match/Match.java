@@ -15,6 +15,12 @@ public class Match {
         this.teamB = teamB;
     }
 
+    public Match(int id, Team teamA, Team teamB) {
+        this.id = id;
+        this.teamA = teamA;
+        this.teamB = teamB;
+    }
+
     public int getId() {
         return id;
     }
@@ -59,9 +65,6 @@ public class Match {
     }
 
     public void setScore(){
-//        this.teamPointsA > this.teamPointsB ? this.teamA.addWins() this.teamB.addLoser() :
-//                this.teamPointsA < this.teamPointsB ? this.teamA.addLoser(), this.teamB.addWins() :
-//                this.teamPointsA == this.teamPointsB ? this.teamA.addEven(), this.teamB.addEven();
         if(this.teamPointsA > this.teamPointsB){
             this.teamA.addWins();
             this.teamB.addLoser();

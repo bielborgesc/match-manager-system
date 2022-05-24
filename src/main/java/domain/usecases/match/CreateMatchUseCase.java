@@ -5,17 +5,13 @@ import domain.entities.team.Team;
 import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 
 public class CreateMatchUseCase {
-    private Match match;
-    private Team firstTeam;
-    private Team secondTeam;
+    private MatchDAO matchDAO;
 
-    public CreateMatchUseCase(Match match, Team firstTeam, Team secondTeam) {
-        this.match = match;
-        this.firstTeam = firstTeam;
-        this.secondTeam = secondTeam;
+    public CreateMatchUseCase(MatchDAO matchDAO) {
+        this.matchDAO = matchDAO;
     }
 
-    public void addTeamsInMatch() throws EntityAlreadyExistsException {
-        match.setTeams(this.firstTeam, this.secondTeam);
+    public void addTeamsInMatch(Match match) throws EntityAlreadyExistsException {
+        matchDAO.create(match);
     }
 }

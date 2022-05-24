@@ -1,13 +1,20 @@
 package application.main;
 
 
+import application.repository.InMemoryMatchDAO;
 import application.repository.InMemoryPlayerDAO;
+import application.repository.InMemoryScoreDAO;
 import application.repository.InMemoryTeamDAO;
+import domain.entities.match.Match;
 import domain.entities.player.GenderEnum;
 import domain.entities.player.Player;
-import domain.entities.player.StatusEnum;
+import domain.entities.score.Score;
 import domain.entities.team.Team;
+import domain.usecases.match.CreateMatchUseCase;
+import domain.usecases.match.FindMatchUseCase;
+import domain.usecases.match.MatchDAO;
 import domain.usecases.player.*;
+import domain.usecases.score.*;
 import domain.usecases.team.*;
 import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 import domain.usecases.utils.exceptions.UnavailablePlayerException;
@@ -30,6 +37,14 @@ public class Main {
     private static FindAllPlayersInTeamUseCase findAllPlayersInTeamUseCase;
     private static FindOnePlayerInTeamUseCase findOnePlayerInTeamUseCase;
 
+    private static CreateScoreUseCase createScoreUseCase;
+    private static FindScoreUseCase findScoreUseCase;
+    private static RemoveScoreUseCase removeScoreUseCase;
+    private static UpdateScoreUseCase updateScoreUseCase;
+
+    private static CreateMatchUseCase createMatchUseCase;
+    private static FindMatchUseCase findMatchUseCase;
+
     public static void main(String[] args) throws EntityAlreadyExistsException, UnavailablePlayerException {
         configureInjection();
 
@@ -49,7 +64,7 @@ public class Main {
         updatePlayerUseCase.update(playerUp);
 //        System.out.println(findPlayerUseCase.findOne("46201548"));
 
-        removePlayerUseCase.remove(player1.getCpf());
+//        removePlayerUseCase.remove(player1.getCpf());
 //        System.out.println(findPlayerUseCase.findOne("46201548"));
 
 
@@ -75,11 +90,10 @@ public class Main {
 //        addPlayerInTeamUseCase.addPlayerInTeam(Optional.of(player4), teamDel.getId());
 
         // REMOVENDO PLAYER DO TIME
-        System.out.println();
-        System.out.println(removePlayerInTeamUseCase.removePlayerInTeam(Optional.of(player1)));
+//        System.out.println(removePlayerInTeamUseCase.removePlayerInTeam(Optional.of(player1)));
 
 //        System.out.println(findPlayerUseCase.findAll());
-        System.out.println(findAllPlayersInTeamUseCase.findAllPlayersInTeam(team1.getId()));
+//        System.out.println(findAllPlayersInTeamUseCase.findAllPlayersInTeam(team1.getId()));
 
         // REMOVE TEAM
 //        System.out.println(findTeamUseCase.findAll());
@@ -87,14 +101,40 @@ public class Main {
 //        System.out.println(findTeamUseCase.findAll());
 
         // BUSCANDO PLAYER PELO idTeam
-        System.out.println(findOnePlayerInTeamUseCase.findOnePlayerInTeam(player1.getCpf(), team1.getId()));
+//        System.out.println(findOnePlayerInTeamUseCase.findOnePlayerInTeam(player1.getCpf(), team1.getId()));
 
         // BUSCAR TIME PELO ID && BUSCAR TODOS
-        System.out.println(findTeamUseCase.findOne(1));
-        System.out.println(findTeamUseCase.findAll());
+//        System.out.println(findTeamUseCase.findOne(1));
+//        System.out.println(findTeamUseCase.findAll());
 
+        //ADICIONAR SCORE NOS TIMES
+        Score scoreTeam1 = new Score(team1.getId());
+        Score scoreTeam2 = new Score(team2.getId());
+        createScoreUseCase.insert(scoreTeam1);
+        createScoreUseCase.insert(scoreTeam2);
+
+        //LISTAR SCORE DO TIME
+//        System.out.println(findScoreUseCase.findOne(team1.getId()));
+//        System.out.println(findScoreUseCase.findAll());
+
+        //ATUALIZAR SCORE DO TIME
+//        System.out.println(findScoreUseCase.findOne(team2.getId()));
+//        Score scoreTeam2Update = new Score(team2.getId());
+//        scoreTeam2Update.setWins();
+//        updateScoreUseCase.update(scoreTeam2Update);
+//        System.out.println(findScoreUseCase.findOne(team2.getId()));
+
+        //REMOVE SCORE DO TIME
+//        System.out.println(findScoreUseCase.findOne(team2.getId()));
+//        removeScoreUseCase.remove(team2.getId());
+//        System.out.println(findScoreUseCase.findOne(team2.getId()));
     }
 
+        //CREATE MATCH
+        Match match1 = new Match(1, findTeamUseCase.findOne(1).get(), findTeamUseCase.findOne(2).get());
+        Match match2 = new Match(2, findTeamUseCase.findOne(2).get(), findTeamUseCase.findOne(1).get());
+
+        match2.setTeamPoints();
 
 
     private static void configureInjection() {
@@ -113,6 +153,17 @@ public class Main {
         findTeamUseCase = new FindTeamUseCase(teamDAO);
         updateTeamUseCase = new UpdateTeamUseCase(teamDAO);
         removeTeamUseCase = new RemoveTeamUseCase(teamDAO);
+
+        ScoreDAO scoreDAO = new InMemoryScoreDAO();
+        createScoreUseCase = new CreateScoreUseCase(scoreDAO);
+        findScoreUseCase = new FindScoreUseCase(scoreDAO);
+        removeScoreUseCase = new RemoveScoreUseCase(scoreDAO);
+        updateScoreUseCase = new UpdateScoreUseCase(scoreDAO);
+
+        MatchDAO matchDAO = new InMemoryMatchDAO();
+        createMatchUseCase = new CreateMatchUseCase(matchDAO);
+        findMatchUseCase = new FindMatchUseCase(matchDAO);
+
     }
 
 }
