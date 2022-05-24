@@ -1,37 +1,39 @@
 package application.repository;
 
+import domain.entities.admin.Admin;
 import domain.entities.user.User;
+import domain.usecases.admin.AdminDAO;
 import domain.usecases.user.UserDAO;
 
 import java.util.*;
 
-public class InMemoryAdminDAO implements UserDAO {
+public class InMemoryAdminDAO implements AdminDAO {
 
-    private static final Map<String, User> db = new LinkedHashMap<>();
+    private static final Map<String, Admin> db = new LinkedHashMap<>();
 
     @Override
-    public String create(User user) {
-        db.put(user.getUsername(), user);
-        return user.getUsername();
+    public String create(Admin admin) {
+        db.put(admin.getLogin(), admin);
+        return admin.getLogin();
     }
 
     @Override
-    public Optional<User> findOne(String username) {
-        if(db.containsKey(username))
-            return Optional.of(db.get(username));
+    public Optional<Admin> findOne(String login) {
+        if(db.containsKey(login))
+            return Optional.of(db.get(login));
         return Optional.empty();
     }
 
     @Override
-    public List<User> findAll() {
+    public List<Admin> findAll() {
         return new ArrayList<>(db.values());
     }
 
     @Override
-    public boolean update(User user) {
-        String username = user.getUsername();
-        if(db.containsKey(username)) {
-            db.replace(username, user);
+    public boolean update(Admin admin) {
+        String login = admin.getLogin();
+        if(db.containsKey(login)) {
+            db.replace(login, admin);
             return true;
         }
         return false;
@@ -47,7 +49,7 @@ public class InMemoryAdminDAO implements UserDAO {
     }
 
     @Override
-    public boolean delete(User user) {
-        return deleteByKey( user.getUsername());
+    public boolean delete(Admin admin) {
+        return deleteByKey( admin.getLogin());
     }
 }
