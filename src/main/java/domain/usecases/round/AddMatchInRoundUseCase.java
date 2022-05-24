@@ -1,22 +1,24 @@
 package domain.usecases.round;
-
-import domain.entities.match.Match;
+import domain.entities.round.Round;
 import domain.usecases.match.MatchDAO;
-import domain.usecases.utils.exceptions.UnavailablePlayerException;
-
-import java.util.Optional;
+import domain.usecases.utils.exceptions.EntityNotFoundException;
 
 public class AddMatchInRoundUseCase {
     private MatchDAO matchDAO;
+    private RoundDAO roundDAO;
 
-    public AddMatchInRoundUseCase(MatchDAO matchDAO) {
+
+    public AddMatchInRoundUseCase(MatchDAO matchDAO, RoundDAO roundDAO) {
         this.matchDAO = matchDAO;
+        this.roundDAO = roundDAO;
     }
 
-    public boolean addMatchInRound(Optional<Match> match, Integer idRound) throws UnavailablePlayerException {
-        if (matchDAO.findOne(match.get().getId()).isPresent()) {
-            return matchDAO
+    public boolean addMatchInRound(Integer idMatch, Integer idRound) {
+        if (matchDAO.findOne(idMatch).isPresent()) {
+            Round roundUp = roundDAO.findOne(idRound).get();
+            return roundUp.addNewMatch(matchDAO.findOne(idMatch).get());
         }
-        throw new UnavailablePlayerException("This player is already on a team");
+
+        throw new EntityNotFoundException("Entity Not Found");
     }
 }

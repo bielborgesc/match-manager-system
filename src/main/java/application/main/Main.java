@@ -14,6 +14,7 @@ import domain.entities.score.Score;
 import domain.entities.team.Team;
 import domain.usecases.match.*;
 import domain.usecases.player.*;
+import domain.usecases.round.AddMatchInRoundUseCase;
 import domain.usecases.round.CreateRoundUseCase;
 import domain.usecases.round.FindRoundUseCase;
 import domain.usecases.round.RoundDAO;
@@ -52,6 +53,7 @@ public class Main {
 
     private static CreateRoundUseCase createRoundUseCase;
     private static FindRoundUseCase findRoundUseCase;
+    private static AddMatchInRoundUseCase addMatchInRoundUseCase;
 
 
     public static void main(String[] args) throws EntityAlreadyExistsException, UnavailablePlayerException {
@@ -116,7 +118,7 @@ public class Main {
 //        System.out.println(findTeamUseCase.findOne(1));
 //        System.out.println(findTeamUseCase.findAll());
 
-        //ADICIONAR SCORE NOS TIMES
+        // ADICIONAR SCORE NOS TIMES
         Score scoreTeam1 = new Score(team1.getId());
         Score scoreTeam2 = new Score(team2.getId());
         Score scoreTeam3 = new Score(teamDel.getId());
@@ -124,23 +126,23 @@ public class Main {
         createScoreUseCase.insert(scoreTeam2);
         createScoreUseCase.insert(scoreTeam3);
 
-        //LISTAR SCORE DO TIME
+        // LISTAR SCORE DO TIME
 //        System.out.println(findScoreUseCase.findOne(team1.getId()));
 //        System.out.println(findScoreUseCase.findAll());
 
-        //ATUALIZAR SCORE DO TIME
+        // ATUALIZAR SCORE DO TIME
 //        System.out.println(findScoreUseCase.findOne(team2.getId()));
 //        Score scoreTeam2Update = new Score(team2.getId());
 //        scoreTeam2Update.setWins();
 //        updateScoreUseCase.update(scoreTeam2Update);
 //        System.out.println(findScoreUseCase.findOne(team2.getId()));
 
-        //REMOVE SCORE DO TIME
+        // REMOVE SCORE DO TIME
 //        System.out.println(findScoreUseCase.findOne(team2.getId()));
 //        removeScoreUseCase.remove(team2.getId());
 //        System.out.println(findScoreUseCase.findOne(team2.getId()));
 
-        //CREATE MATCH
+        // CREATE MATCH
         Match match1 = new Match(1, findTeamUseCase.findOne(1).get(), findTeamUseCase.findOne(2).get());
         Match match2 = new Match(2, findTeamUseCase.findOne(2).get(), findTeamUseCase.findOne(1).get());
         Match matchTest = new Match(3, findTeamUseCase.findOne(3).get(), findTeamUseCase.findOne(2).get());
@@ -150,7 +152,7 @@ public class Main {
         createMatchUseCase.addMatch(matchTest);
 //        System.out.println(findMatchUseCase.findAll());
 
-        //DEFININDO PONTUAÇÃO DA PARTIDA
+        // DEFININDO PONTUAÇÃO DA PARTIDA
         match1.setTeamPoints(1,2);
         match2.setTeamPoints(3,3);
         matchTest.setTeamPoints(1,2);
@@ -161,15 +163,24 @@ public class Main {
 //        System.out.println(findScoreUseCase.findOne(team1.getId()));
 //        System.out.println(findScoreUseCase.findOne(team2.getId()));
 
-        //BUSCAR PARTIDA PELO ID DO TIME
+        // BUSCAR PARTIDA PELO ID DO TIME
 //        System.out.println(findMatchByIdTeamUseCase.findMatchByIdTeam(team1.getId()));
 //        System.out.println(findMatchByIdTeamUseCase.findMatchByIdTeam(teamDel.getId()));
 //        System.out.println(findMatchByIdTeamUseCase.findMatchByIdTeam(team2.getId()));
 
-        //ROUNDs
+        // ROUNDS
         Round round1 = new Round(1);
         createRoundUseCase.insert(round1);
-        System.out.println(findRoundUseCase.findOne(1));
+//        System.out.println(findRoundUseCase.findOne(1));
+
+        addMatchInRoundUseCase.addMatchInRound(match2.getId(), 1);
+//        addMatchInRoundUseCase.addMatchInRound(Optional.of(match2), 1);
+//        addMatchInRoundUseCase.addMatchInRound(Optional.of(matchTest), findRoundUseCase.findOne(1).get().getId());
+
+//        System.out.println("Find all na main: " + findRoundUseCase.findAll());
+//        System.out.println(findRoundUseCase.findAll().get(1));
+
+
     }
 
 
@@ -202,10 +213,11 @@ public class Main {
         setTeamPointsUseCase = new SetTeamPointsUseCase(matchDAO, scoreDAO);
         findMatchByIdTeamUseCase = new FindMatchByIdTeamUseCase(matchDAO, teamDAO);
 
-
         RoundDAO roundDAO = new InMemoryRoundDAO();
         createRoundUseCase = new CreateRoundUseCase(roundDAO);
         findRoundUseCase = new FindRoundUseCase(roundDAO);
+        addMatchInRoundUseCase = new AddMatchInRoundUseCase(matchDAO, roundDAO);
+
     }
 
 }
