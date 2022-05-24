@@ -23,6 +23,25 @@ public class InMemoryPlayerDAO implements PlayerDAO {
     }
 
     @Override
+    public LinkedHashMap<String, Player> findAllPlayersByIdTeam(Integer idTeam) {
+        LinkedHashMap<String, Player> arrPlayers = new LinkedHashMap<String, Player>();
+        for (Player value : db.values()) {
+            if (Objects.equals(value.getIdTeam(), idTeam)) {
+                arrPlayers.put(value.getCpf(), value);
+            }
+        }
+        return arrPlayers;
+    }
+
+    @Override
+    public Player findPlayersByIdTeam(String cpfPlayer, Integer idTeam) {
+        if (db.get(cpfPlayer).getIdTeam() == idTeam) {
+            return db.get(cpfPlayer);
+        }
+        return null;
+    }
+
+    @Override
     public List<Player> findAll() {
         return new ArrayList<>(db.values());
     }
