@@ -5,7 +5,7 @@ import domain.usecases.user.UserDAO;
 
 import java.util.*;
 
-public class InMemoryUserDAO implements UserDAO {
+public class InMemoryAdminDAO implements UserDAO {
 
     private static final Map<String, User> db = new LinkedHashMap<>();
 
