@@ -1,28 +1,28 @@
 package application.main;
 
 
-import application.repository.InMemoryMatchDAO;
-import application.repository.InMemoryPlayerDAO;
-import application.repository.InMemoryRoundDAO;
-import application.repository.InMemoryScoreDAO;
-import application.repository.InMemoryTeamDAO;
+import application.repository.*;
+import domain.entities.championship.CategoryEnum;
+import domain.entities.championship.Championship;
+import domain.entities.championship.TypeEnum;
 import domain.entities.match.Match;
 import domain.entities.player.GenderEnum;
 import domain.entities.player.Player;
 import domain.entities.round.Round;
 import domain.entities.score.Score;
 import domain.entities.team.Team;
+import domain.usecases.championship.ChampionshipDAO;
+import domain.usecases.championship.CreateChampionshipUseCase;
+import domain.usecases.championship.FindChampionshipUseCase;
 import domain.usecases.match.*;
 import domain.usecases.player.*;
-import domain.usecases.round.AddMatchInRoundUseCase;
-import domain.usecases.round.CreateRoundUseCase;
-import domain.usecases.round.FindRoundUseCase;
-import domain.usecases.round.RoundDAO;
+import domain.usecases.round.*;
 import domain.usecases.score.*;
 import domain.usecases.team.*;
 import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 import domain.usecases.utils.exceptions.UnavailablePlayerException;
 
+import java.util.Date;
 import java.util.Optional;
 
 public class Main {
@@ -54,6 +54,10 @@ public class Main {
     private static CreateRoundUseCase createRoundUseCase;
     private static FindRoundUseCase findRoundUseCase;
     private static AddMatchInRoundUseCase addMatchInRoundUseCase;
+
+    private static AddRoundInChampionshipUseCase addRoundInChampionshipUseCase;
+    private static CreateChampionshipUseCase createChampionshipUseCase;
+    private static FindChampionshipUseCase findChampionshipUseCase;
 
 
     public static void main(String[] args) throws EntityAlreadyExistsException, UnavailablePlayerException {
@@ -180,6 +184,12 @@ public class Main {
 //        System.out.println("Find all na main: " + findRoundUseCase.findAll());
 //        System.out.println(findRoundUseCase.findAll().get(1));
 
+        //ADICIONAR RODADA
+        Championship championship = new Championship(1, "Campeonato Teste", new Date(), TypeEnum.FUTEBOL, CategoryEnum.ADULT);
+        createChampionshipUseCase.insert(championship);
+        addRoundInChampionshipUseCase.AddRoundInChampionship(round1.getId(), 1);
+        System.out.println(findChampionshipUseCase.findOne(championship.getId()));
+
 
     }
 
@@ -218,6 +228,10 @@ public class Main {
         findRoundUseCase = new FindRoundUseCase(roundDAO);
         addMatchInRoundUseCase = new AddMatchInRoundUseCase(matchDAO, roundDAO);
 
+        ChampionshipDAO championshipDAO = new InMemoryChampionshipDAO();
+        addRoundInChampionshipUseCase = new AddRoundInChampionshipUseCase(roundDAO, championshipDAO);
+        createChampionshipUseCase = new CreateChampionshipUseCase(championshipDAO);
+        findChampionshipUseCase = new FindChampionshipUseCase(championshipDAO);
     }
 
 }
