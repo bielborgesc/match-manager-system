@@ -39,11 +39,15 @@ public class InMemoryAdminDAO implements UserDAO {
 
     @Override
     public boolean deleteByKey(String key) {
+        if(db.containsKey(key)){
+            db.remove(key);
+            return true;
+        }
         return false;
     }
 
     @Override
-    public boolean delete(User type) {
-        return false;
+    public boolean delete(User user) {
+        return deleteByKey( user.getUsername());
     }
 }
