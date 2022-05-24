@@ -15,7 +15,7 @@ public class AddRoundInChampionshipUseCase {
         if(roundDAO.findOne(idRound).isPresent()){
             Round round = roundDAO.findOne(idRound).get();
              championshipDAO.addRoundInChampionship(round, idChampionship);
-         }
+        }
     }
 
 }
