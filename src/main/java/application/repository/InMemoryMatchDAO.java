@@ -1,6 +1,7 @@
 package application.repository;
 
 import domain.entities.match.Match;
+import domain.entities.player.Player;
 import domain.usecases.match.MatchDAO;
 
 import java.util.*;
@@ -39,6 +40,17 @@ public class InMemoryMatchDAO implements MatchDAO {
     }
 
     @Override
+    public LinkedHashMap<Integer, Match> findMatchByIdTeam(Integer idTeam) {
+        LinkedHashMap<Integer, Match> arrMatches = new LinkedHashMap<>();
+        for (Match match : db.values()) {
+            if (match.getTeamA().getId() == idTeam || match.getTeamB().getId() == idTeam) {
+                arrMatches.put(match.getId(), match);
+            }
+        }
+        return arrMatches;
+    }
+
+    @Override
     public boolean deleteByKey(Integer id) {
         if(db.containsKey(id)){
             db.remove(id);
@@ -51,4 +63,5 @@ public class InMemoryMatchDAO implements MatchDAO {
     public boolean delete(Match match) {
         return deleteByKey(match.getId());
     }
+
 }

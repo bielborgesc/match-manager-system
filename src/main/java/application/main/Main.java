@@ -148,8 +148,7 @@ public class Main {
         System.out.println(findScoreUseCase.findOne(team1.getId()));
         System.out.println(findScoreUseCase.findOne(team2.getId()));
 
-
-        //        TODO findMatchPerTeamId
+        //BUSCAR PARTIDA PELO ID DO TIME
 
     }
 
