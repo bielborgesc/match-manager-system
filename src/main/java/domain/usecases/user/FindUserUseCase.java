@@ -1,6 +1,5 @@
 package domain.usecases.user;
 
-import domain.entities.player.Player;
 import domain.entities.user.User;
 
 import java.util.List;

@@ -1,6 +1,10 @@
 package domain.usecases.user;
 
+
 import domain.entities.user.User;
+import domain.entities.player.Player;
+import domain.entities.user.User;
+import domain.usecases.player.PlayerDAO;
 import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 
 public class CreateUserUseCase {
