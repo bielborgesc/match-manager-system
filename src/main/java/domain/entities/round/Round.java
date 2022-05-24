@@ -15,4 +15,9 @@ public class Round {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
+    }
 }

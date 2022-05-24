@@ -1,8 +1,6 @@
 package domain.usecases.score;
 
-import domain.entities.player.Player;
 import domain.entities.score.Score;
-import domain.usecases.player.PlayerDAO;
 
 import java.util.List;
 import java.util.Optional;

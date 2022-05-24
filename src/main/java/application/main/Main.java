@@ -3,15 +3,20 @@ package application.main;
 
 import application.repository.InMemoryMatchDAO;
 import application.repository.InMemoryPlayerDAO;
+import application.repository.InMemoryRoundDAO;
 import application.repository.InMemoryScoreDAO;
 import application.repository.InMemoryTeamDAO;
 import domain.entities.match.Match;
 import domain.entities.player.GenderEnum;
 import domain.entities.player.Player;
+import domain.entities.round.Round;
 import domain.entities.score.Score;
 import domain.entities.team.Team;
 import domain.usecases.match.*;
 import domain.usecases.player.*;
+import domain.usecases.round.CreateRoundUseCase;
+import domain.usecases.round.FindRoundUseCase;
+import domain.usecases.round.RoundDAO;
 import domain.usecases.score.*;
 import domain.usecases.team.*;
 import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
@@ -44,6 +49,10 @@ public class Main {
     private static FindMatchUseCase findMatchUseCase;
     private static SetTeamPointsUseCase setTeamPointsUseCase;
     private static FindMatchByIdTeamUseCase findMatchByIdTeamUseCase;
+
+    private static CreateRoundUseCase createRoundUseCase;
+    private static FindRoundUseCase findRoundUseCase;
+
 
     public static void main(String[] args) throws EntityAlreadyExistsException, UnavailablePlayerException {
         configureInjection();
@@ -157,8 +166,10 @@ public class Main {
 //        System.out.println(findMatchByIdTeamUseCase.findMatchByIdTeam(teamDel.getId()));
 //        System.out.println(findMatchByIdTeamUseCase.findMatchByIdTeam(team2.getId()));
 
-
-
+        //ROUNDs
+        Round round1 = new Round(1);
+        createRoundUseCase.insert(round1);
+        System.out.println(findRoundUseCase.findOne(1));
     }
 
 
@@ -191,6 +202,10 @@ public class Main {
         setTeamPointsUseCase = new SetTeamPointsUseCase(matchDAO, scoreDAO);
         findMatchByIdTeamUseCase = new FindMatchByIdTeamUseCase(matchDAO, teamDAO);
 
+
+        RoundDAO roundDAO = new InMemoryRoundDAO();
+        createRoundUseCase = new CreateRoundUseCase(roundDAO);
+        findRoundUseCase = new FindRoundUseCase(roundDAO);
     }
 
 }

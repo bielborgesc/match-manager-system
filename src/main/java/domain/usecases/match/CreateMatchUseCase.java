@@ -1,7 +1,7 @@
 package domain.usecases.match;
 
 import domain.entities.match.Match;
-import domain.entities.team.Team;
+
 import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 
 public class CreateMatchUseCase {

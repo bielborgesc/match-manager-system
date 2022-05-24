@@ -3,9 +3,6 @@ package domain.usecases.team;
 import domain.entities.player.Player;
 import domain.usecases.player.PlayerDAO;
 
-import java.util.LinkedHashMap;
-import java.util.Objects;
-import java.util.Optional;
 
 public class FindOnePlayerInTeamUseCase {
 

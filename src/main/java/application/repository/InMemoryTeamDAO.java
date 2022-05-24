@@ -1,6 +1,5 @@
 package application.repository;
 
-import domain.entities.match.Match;
 import domain.entities.team.Team;
 import domain.usecases.team.TeamDAO;
 

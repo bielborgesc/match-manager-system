@@ -1,6 +1,5 @@
 package domain.usecases.utils.dao;
 
-import domain.entities.match.Match;
 
 import java.util.List;
 import java.util.Optional;

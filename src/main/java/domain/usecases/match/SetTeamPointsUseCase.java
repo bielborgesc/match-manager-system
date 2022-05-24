@@ -5,8 +5,6 @@ import domain.entities.score.Score;
 import domain.usecases.score.ScoreDAO;
 import domain.usecases.utils.exceptions.EntityNotFoundException;
 
-import java.util.Optional;
-
 public class SetTeamPointsUseCase {
     private MatchDAO matchDAO;
     private ScoreDAO scoreDAO;

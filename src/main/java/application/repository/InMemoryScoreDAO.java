@@ -1,6 +1,5 @@
 package application.repository;
 
-import domain.entities.match.Match;
 import domain.entities.score.Score;
 import domain.usecases.score.ScoreDAO;
 

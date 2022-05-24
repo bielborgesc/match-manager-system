@@ -1,7 +1,5 @@
 package domain.entities.team;
 
-import domain.entities.score.Score;
-
 public class Team {
     private int Id;
     private String name;
