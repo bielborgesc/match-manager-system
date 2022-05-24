@@ -16,8 +16,6 @@ public class RemovePlayerInTeamUseCase {
   private PlayerDAO playerDAO;
 
   public boolean removePlayerInTeam(Optional<Player> player) throws UnavailablePlayerException {
-    System.out.println(player.get().getStatus());
-    System.out.println(playerDAO.findOne(player.get().getCpf()).get().getStatus());
     if (StatusEnum.UNAVAILABLE == playerDAO.findOne(player.get().getCpf()).get().getStatus()) {
       Player playerTeam = new Player(player.get().getName(), player.get().getCpf(), player.get().getGender(), null);
       return playerDAO.update(playerTeam);

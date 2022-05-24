@@ -1,8 +1,7 @@
 package application.repository;
 
-import domain.entities.player.Player;
+import domain.entities.match.Match;
 import domain.entities.team.Team;
-import domain.usecases.player.PlayerDAO;
 import domain.usecases.team.TeamDAO;
 
 import java.util.*;

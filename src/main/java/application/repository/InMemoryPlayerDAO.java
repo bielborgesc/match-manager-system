@@ -1,5 +1,6 @@
 package application.repository;
 
+import domain.entities.match.Match;
 import domain.entities.player.Player;
 import domain.usecases.player.PlayerDAO;
 

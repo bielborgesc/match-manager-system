@@ -25,24 +25,24 @@ public class Score {
         return wins;
     }
 
-    public void setWins() {
-        this.wins += 1;
+    public void setWins(Integer qtdd) {
+        this.wins = qtdd;
     }
 
     public int getLoses() {
         return loses;
     }
 
-    public void setLoses() {
-        this.loses += 1;
+    public void setLoses(Integer qtdd) {
+        this.loses = qtdd;
     }
 
     public int getEven() {
         return even;
     }
 
-    public void setEven() {
-        this.even += 1;
+    public void setEven(Integer qtdd) {
+        this.even = qtdd;
     }
 
     @Override

@@ -1,9 +1,8 @@
 package application.repository;
 
+import domain.entities.match.Match;
 import domain.entities.score.Score;
-import domain.entities.team.Team;
 import domain.usecases.score.ScoreDAO;
-import domain.usecases.team.TeamDAO;
 
 import java.util.*;
 

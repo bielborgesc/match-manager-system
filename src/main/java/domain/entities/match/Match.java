@@ -53,7 +53,6 @@ public class Match {
     public void setTeamPoints(int teamPointsA, int teamPointsB) {
         this.teamPointsA = teamPointsA;
         this.teamPointsB = teamPointsB;
-        this.setScore();
     }
 
     public boolean getStatus() {
@@ -62,19 +61,6 @@ public class Match {
 
     public void setStatus(boolean bool) {
         this.isFinished = bool;
-    }
-
-    private void setScore(){
-        if(this.teamPointsA > this.teamPointsB){
-            this.teamA.addWins();
-            this.teamB.addLoser();
-        } else if(this.teamPointsA < this.teamPointsB){
-            this.teamA.addLoser();
-            this.teamB.addWins();
-        } else {
-            this.teamA.addEven();
-            this.teamB.addEven();
-        }
     }
 
     @Override

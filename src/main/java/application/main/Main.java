@@ -13,6 +13,7 @@ import domain.entities.team.Team;
 import domain.usecases.match.CreateMatchUseCase;
 import domain.usecases.match.FindMatchUseCase;
 import domain.usecases.match.MatchDAO;
+import domain.usecases.match.SetTeamPointsUseCase;
 import domain.usecases.player.*;
 import domain.usecases.score.*;
 import domain.usecases.team.*;
@@ -44,6 +45,7 @@ public class Main {
 
     private static CreateMatchUseCase createMatchUseCase;
     private static FindMatchUseCase findMatchUseCase;
+    private static SetTeamPointsUseCase setTeamPointsUseCase;
 
     public static void main(String[] args) throws EntityAlreadyExistsException, UnavailablePlayerException {
         configureInjection();
@@ -133,16 +135,22 @@ public class Main {
         Match match1 = new Match(1, findTeamUseCase.findOne(1).get(), findTeamUseCase.findOne(2).get());
         Match match2 = new Match(2, findTeamUseCase.findOne(2).get(), findTeamUseCase.findOne(1).get());
 
-//        TODO criar casos de uso para Score
-//        TODO findMatchPerTeamId
-
-//        match1.setTeamPoints(2,3);
-//        match2.setTeamPoints(4,4);
-
         createMatchUseCase.addMatch(match1);
         createMatchUseCase.addMatch(match2);
+//        System.out.println(findMatchUseCase.findAll());
 
+        //DEFININDO PONTUAÇÃO DA PARTIDA
+        match1.setTeamPoints(1,2);
+        match2.setTeamPoints(3,3);
+        setTeamPointsUseCase.setTeamPoints(match2);
+        setTeamPointsUseCase.setTeamPoints(match1);
         System.out.println(findMatchUseCase.findAll());
+        System.out.println(findScoreUseCase.findOne(team1.getId()));
+        System.out.println(findScoreUseCase.findOne(team2.getId()));
+
+
+        //        TODO findMatchPerTeamId
+
     }
 
 
@@ -172,6 +180,7 @@ public class Main {
         MatchDAO matchDAO = new InMemoryMatchDAO();
         createMatchUseCase = new CreateMatchUseCase(matchDAO);
         findMatchUseCase = new FindMatchUseCase(matchDAO);
+        setTeamPointsUseCase = new SetTeamPointsUseCase(matchDAO, scoreDAO);
 
     }
 
