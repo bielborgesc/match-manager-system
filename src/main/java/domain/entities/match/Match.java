@@ -64,7 +64,7 @@ public class Match {
         this.isFinished = bool;
     }
 
-    public void setScore(){
+    private void setScore(){
         if(this.teamPointsA > this.teamPointsB){
             this.teamA.addWins();
             this.teamB.addLoser();

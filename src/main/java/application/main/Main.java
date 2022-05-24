@@ -128,13 +128,22 @@ public class Main {
 //        System.out.println(findScoreUseCase.findOne(team2.getId()));
 //        removeScoreUseCase.remove(team2.getId());
 //        System.out.println(findScoreUseCase.findOne(team2.getId()));
-    }
 
         //CREATE MATCH
         Match match1 = new Match(1, findTeamUseCase.findOne(1).get(), findTeamUseCase.findOne(2).get());
         Match match2 = new Match(2, findTeamUseCase.findOne(2).get(), findTeamUseCase.findOne(1).get());
 
-        match2.setTeamPoints();
+//        TODO criar casos de uso para Score
+//        TODO findMatchPerTeamId
+
+//        match1.setTeamPoints(2,3);
+//        match2.setTeamPoints(4,4);
+
+        createMatchUseCase.addMatch(match1);
+        createMatchUseCase.addMatch(match2);
+
+        System.out.println(findMatchUseCase.findAll());
+    }
 
 
     private static void configureInjection() {

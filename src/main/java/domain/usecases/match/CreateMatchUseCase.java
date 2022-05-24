@@ -11,7 +11,7 @@ public class CreateMatchUseCase {
         this.matchDAO = matchDAO;
     }
 
-    public void addTeamsInMatch(Match match) throws EntityAlreadyExistsException {
+    public void addMatch(Match match) throws EntityAlreadyExistsException {
         matchDAO.create(match);
     }
 }
