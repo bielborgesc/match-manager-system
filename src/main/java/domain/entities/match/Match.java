@@ -8,17 +8,20 @@ public class Match {
     private Team teamB;
     private int teamPointsA;
     private int teamPointsB;
+    private int idRound;
     private boolean isFinished = false; // Realizada e não realizada
-
-    public Match(Team teamA, Team teamB) {
-        this.teamA = teamA;
-        this.teamB = teamB;
-    }
 
     public Match(int id, Team teamA, Team teamB) {
         this.id = id;
         this.teamA = teamA;
         this.teamB = teamB;
+    }
+
+    public Match(int id, Team teamA, Team teamB, int idRound) {
+        this.id = id;
+        this.teamA = teamA;
+        this.teamB = teamB;
+        this.idRound = idRound;
     }
 
     public int getId() {
@@ -63,6 +66,14 @@ public class Match {
         this.isFinished = bool;
     }
 
+    public int getIdRound() {
+        return idRound;
+    }
+
+    public void setIdRound(int idRound) {
+        this.idRound = idRound;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Match{");
@@ -71,6 +82,8 @@ public class Match {
         sb.append(", teamB=").append(teamB);
         sb.append(", teamPointsA=").append(teamPointsA);
         sb.append(", teamPointsB=").append(teamPointsB);
+        sb.append(", idRound=").append(idRound);
+        sb.append(", isFinished=").append(isFinished);
         sb.append('}');
         return sb.toString();
     }
