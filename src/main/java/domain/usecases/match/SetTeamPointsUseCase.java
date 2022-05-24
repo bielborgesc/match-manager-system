@@ -26,6 +26,7 @@ public class SetTeamPointsUseCase {
     private void setScore(Match match){
         Integer idTeamA = match.getTeamA().getId();
         Integer idTeamB = match.getTeamB().getId();
+
         Score scoreTeamA = new Score(idTeamA);
         scoreTeamA.setLoses(scoreDAO.findOne(idTeamA).get().getLoses());
         scoreTeamA.setEven(scoreDAO.findOne(idTeamA).get().getEven());
@@ -35,10 +36,10 @@ public class SetTeamPointsUseCase {
         scoreTeamB.setEven(scoreDAO.findOne(idTeamB).get().getEven());
         scoreTeamB.setWins(scoreDAO.findOne(idTeamB).get().getWinds());
 
-        if(match.getTeamPointsA() > match.getTeamPointsB()){
+        if (match.getTeamPointsA() > match.getTeamPointsB()) {
             scoreTeamA.setWins( scoreTeamA.getWinds() + 1);
             scoreTeamB.setLoses(scoreTeamB.getLoses() + 1);
-        } else if(match.getTeamPointsA()  < match.getTeamPointsB()){
+        } else if (match.getTeamPointsA()  < match.getTeamPointsB()){
             scoreTeamA.setLoses(scoreTeamA.getLoses() + 1);
             scoreTeamB.setWins(scoreTeamB.getWinds() + 1);
         } else {
