@@ -13,12 +13,36 @@ public class Admin {
         this.password = password;
     }
 
-//    public Championship championshipSearch() {}
-//    public void createChampionship() {}
-//    public void changeChampionship() {}
-//    public void excludesChampionship() {}
-//    public void teamSearch() {}
-//    public void createTeam() {}
-//    public void modifyTeam() {}
-//    public void excludeTeam() {}
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "name='" + name + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
