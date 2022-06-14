@@ -1,8 +1,6 @@
 package domain.usecases.championship;
 
 import domain.entities.championship.Championship;
-import domain.entities.player.Player;
-import domain.usecases.player.PlayerDAO;
 
 import java.util.List;
 import java.util.Optional;
