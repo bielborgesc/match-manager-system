@@ -1,6 +1,7 @@
 package domain.usecases.team;
 import domain.entities.team.Team;
-import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
+import domain.utils.exceptions.EntityAlreadyExistsException;
+
 
 public class CreateTeamUseCase {
     private TeamDAO teamDAO;

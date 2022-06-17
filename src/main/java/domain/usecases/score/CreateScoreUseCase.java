@@ -1,7 +1,7 @@
 package domain.usecases.score;
 
 import domain.entities.score.Score;
-import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
+import domain.utils.exceptions.EntityAlreadyExistsException;
 
 public class CreateScoreUseCase {
     private ScoreDAO scoreDAO;

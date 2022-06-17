@@ -1,7 +1,7 @@
 package domain.usecases.score;
 
 import domain.entities.score.Score;
-import domain.usecases.utils.exceptions.EntityNotFoundException;
+import domain.utils.exceptions.EntityNotFoundException;
 
 public class UpdateScoreUseCase {
     private ScoreDAO scoreDAO;

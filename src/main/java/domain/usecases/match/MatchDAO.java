@@ -1,7 +1,7 @@
 package domain.usecases.match;
 
 import domain.entities.match.Match;
-import domain.usecases.utils.dao.DAO;
+import domain.utils.dao.DAO;
 
 import java.util.LinkedHashMap;
 

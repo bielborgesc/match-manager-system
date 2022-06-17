@@ -2,7 +2,7 @@ package domain.usecases.match;
 
 import domain.entities.match.Match;
 import domain.usecases.team.TeamDAO;
-import domain.usecases.utils.exceptions.EntityNotFoundException;
+import domain.utils.exceptions.EntityNotFoundException;
 
 import java.util.LinkedHashMap;
 

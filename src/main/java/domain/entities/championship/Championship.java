@@ -25,15 +25,6 @@ public class Championship {
         this.categoryEnum = categoryEnum;
     }
 
-    public Championship(int id, String name, Date date, LinkedHashMap<Integer, Round> rounds, TypeEnum typeEnum, CategoryEnum categoryEnum) {
-        this.id = id;
-        this.name = name;
-        this.date = date;
-        this.rounds = rounds;
-        this.typeEnum = typeEnum;
-        this.categoryEnum = categoryEnum;
-    }
-
     public int getId() {
         return id;
     }

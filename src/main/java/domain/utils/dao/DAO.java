@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DAO<K, T> {
-    K crete(T type);
+    K create(T type);
     Optional<T> findOne(K type);
     List<T> findAll();
     boolean update(T type);

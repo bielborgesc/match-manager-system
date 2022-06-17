@@ -25,32 +25,45 @@ public class Score {
         return wins;
     }
 
-    public void setWins(Integer qtdd) {
-        this.wins = qtdd;
+    public void addWin() {
+        this.wins += 1;
     }
 
     public int getLoses() {
         return loses;
     }
 
-    public void setLoses(Integer qtdd) {
-        this.loses = qtdd;
+    public void addLose() {
+        this.loses += 1;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public void setLoses(int loses) {
+        this.loses = loses;
+    }
+
+    public void setEven(int even) {
+        this.even = even;
+    }
+
+    public void addEven() {
+        this.even += 1;
     }
 
     public int getEven() {
         return even;
     }
 
-    public void setEven(Integer qtdd) {
-        this.even = qtdd;
-    }
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Classification: ");
-        sb.append("winds = ").append(wins);
-        sb.append(", loses = ").append(loses);
-        sb.append(", even = ").append(even);
+        final StringBuffer sb = new StringBuffer("Score: ").append("id: ").append(getIdTeam()).append("\n");
+        sb.append("winds: ").append(wins).append("\n");
+        sb.append("loses: ").append(loses).append("\n");
+        sb.append("even: ").append(even).append("\n").append("\n");
         return sb.toString();
     }
 }

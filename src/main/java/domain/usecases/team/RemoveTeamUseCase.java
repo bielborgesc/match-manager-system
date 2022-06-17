@@ -1,7 +1,7 @@
 package domain.usecases.team;
 
 import domain.entities.team.Team;
-import domain.usecases.utils.exceptions.EntityNotFoundException;
+import domain.utils.exceptions.EntityNotFoundException;
 
 public class RemoveTeamUseCase {
     private TeamDAO teamDAO;

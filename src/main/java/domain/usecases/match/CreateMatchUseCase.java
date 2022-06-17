@@ -1,8 +1,8 @@
 package domain.usecases.match;
 
 import domain.entities.match.Match;
+import domain.utils.exceptions.EntityAlreadyExistsException;
 
-import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
 
 public class CreateMatchUseCase {
     private MatchDAO matchDAO;

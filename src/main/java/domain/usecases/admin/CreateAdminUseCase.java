@@ -1,7 +1,7 @@
 package domain.usecases.admin;
 
 import domain.entities.admin.Admin;
-import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
+import domain.utils.exceptions.EntityAlreadyExistsException;
 
 public class CreateAdminUseCase {
     private AdminDAO adminDAO;

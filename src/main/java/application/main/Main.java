@@ -12,12 +12,12 @@ import domain.usecases.admin.*;
 import domain.usecases.championship.ChampionshipDAO;
 import domain.usecases.championship.CreateChampionshipUseCase;
 import domain.usecases.championship.FindChampionshipUseCase;
+import domain.usecases.championship.GenerateTurnAndReturnChampionshipUseCase;
 import domain.usecases.match.*;
 import domain.usecases.round.*;
 import domain.usecases.score.*;
 import domain.usecases.team.*;
-import domain.usecases.user.*;
-import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
+import domain.utils.exceptions.EntityAlreadyExistsException;
 
 import java.util.Date;
 
@@ -44,20 +44,40 @@ public class Main {
     private static AddRoundInChampionshipUseCase addRoundInChampionshipUseCase;
     private static CreateChampionshipUseCase createChampionshipUseCase;
     private static FindChampionshipUseCase findChampionshipUseCase;
-
-    private static FindUserUseCase findUserUseCase;
-    private static RemoveUserUseCase removeUserUseCase;
-    private static UpdateUserUseCase updateUserUseCase;
-    private static CreateUserUseCase createUserUseCase;
+    private static GenerateTurnAndReturnChampionshipUseCase generateTurnAndReturnChampionshipUseCase;
 
     private static FindAdminUseCase findAdminUseCase;
     private static RemoveAdminUseCase removeAdminUseCase;
     private static UpdateAdminUseCase updateAdminUseCase;
     private static CreateAdminUseCase createAdminUseCase;
 
-    public static void main(String[] args) throws EntityAlreadyExistsException{
+    public static void main(String[] args) throws EntityAlreadyExistsException {
         configureInjection();
 
+        // Criando Times
+        createTeamUseCase.insert(new Team(1, "Corinthias"));
+        createTeamUseCase.insert(new Team(2,"São Paulo"));
+        createTeamUseCase.insert(new Team(3, "Bahia"));
+        createTeamUseCase.insert(new Team(4, "Santos"));
+        createTeamUseCase.insert(new Team(5, "Sporte"));
+        createTeamUseCase.insert(new Team(6, "Juninho"));
+        createTeamUseCase.insert(new Team(7, "Palmeiras"));
+        createTeamUseCase.insert(new Team(8, "Renato"));
+
+        //Criando Classificações
+        createScoreUseCase.insert(new Score(1));
+        createScoreUseCase.insert(new Score(2));
+        createScoreUseCase.insert(new Score(3));
+        createScoreUseCase.insert(new Score(4));
+        createScoreUseCase.insert(new Score(5));
+        createScoreUseCase.insert(new Score(6));
+        createScoreUseCase.insert(new Score(7));
+        createScoreUseCase.insert(new Score(8));
+
+        //Criando campeonato
+        createChampionshipUseCase.insert(new Championship(1,  "Brasileirão",  new Date(), TypeEnum.FUTEBOL, CategoryEnum.ADULT));
+        Championship championship = generateTurnAndReturnChampionshipUseCase.generate(1);
+        System.out.println(championship.getRounds());
 
     }
 
@@ -90,12 +110,8 @@ public class Main {
         addRoundInChampionshipUseCase = new AddRoundInChampionshipUseCase(roundDAO, championshipDAO);
         createChampionshipUseCase = new CreateChampionshipUseCase(championshipDAO);
         findChampionshipUseCase = new FindChampionshipUseCase(championshipDAO);
+        generateTurnAndReturnChampionshipUseCase = new GenerateTurnAndReturnChampionshipUseCase(championshipDAO, teamDAO, scoreDAO);
 
-        UserDAO userDAO = new InMemoryUserDAO();
-        createUserUseCase = new CreateUserUseCase(userDAO);
-        findUserUseCase = new FindUserUseCase(userDAO);
-        removeUserUseCase = new RemoveUserUseCase(userDAO);
-        updateUserUseCase = new UpdateUserUseCase(userDAO);
 
         AdminDAO adminDAO = new InMemoryAdminDAO();
         createAdminUseCase = new CreateAdminUseCase(adminDAO);

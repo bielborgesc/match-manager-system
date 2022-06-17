@@ -1,7 +1,7 @@
 package domain.usecases.round;
 import domain.entities.round.Round;
 import domain.usecases.match.MatchDAO;
-import domain.usecases.utils.exceptions.EntityNotFoundException;
+import domain.utils.exceptions.EntityNotFoundException;
 
 public class AddMatchInRoundUseCase {
     private MatchDAO matchDAO;

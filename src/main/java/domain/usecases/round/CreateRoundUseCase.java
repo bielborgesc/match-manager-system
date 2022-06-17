@@ -1,7 +1,7 @@
 package domain.usecases.round;
 
 import domain.entities.round.Round;
-import domain.usecases.utils.exceptions.EntityAlreadyExistsException;
+import domain.utils.exceptions.EntityAlreadyExistsException;
 
 public class CreateRoundUseCase {
     private RoundDAO roundDAO;

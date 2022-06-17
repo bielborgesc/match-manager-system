@@ -1,9 +1,7 @@
 package application.repository;
 
 import domain.entities.admin.Admin;
-import domain.entities.user.User;
 import domain.usecases.admin.AdminDAO;
-import domain.usecases.user.UserDAO;
 
 import java.util.*;
 

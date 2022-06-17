@@ -3,7 +3,7 @@ package domain.usecases.match;
 import domain.entities.match.Match;
 import domain.entities.score.Score;
 import domain.usecases.score.ScoreDAO;
-import domain.usecases.utils.exceptions.EntityNotFoundException;
+import domain.utils.exceptions.EntityNotFoundException;
 
 public class SetTeamPointsUseCase {
     private MatchDAO matchDAO;

@@ -1,7 +1,7 @@
 package domain.usecases.admin;
 
 import domain.entities.admin.Admin;
-import domain.usecases.utils.exceptions.EntityNotFoundException;
+import domain.utils.exceptions.EntityNotFoundException;
 
 public class RemoveAdminUseCase {
     private AdminDAO adminDAO;

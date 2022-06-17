@@ -27,10 +27,9 @@ public class Team {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Team{");
-        sb.append("Id=").append(Id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append('}');
+        final StringBuffer sb = new StringBuffer().append('\n');
+        sb.append("Id: ").append(Id).append('\n');
+        sb.append("name: ").append(name).append('\n');
         return sb.toString();
     }
 }
