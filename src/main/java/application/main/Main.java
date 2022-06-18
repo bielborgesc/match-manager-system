@@ -110,7 +110,7 @@ public class Main {
         addRoundInChampionshipUseCase = new AddRoundInChampionshipUseCase(roundDAO, championshipDAO);
         createChampionshipUseCase = new CreateChampionshipUseCase(championshipDAO);
         findChampionshipUseCase = new FindChampionshipUseCase(championshipDAO);
-        generateTurnAndReturnChampionshipUseCase = new GenerateTurnAndReturnChampionshipUseCase(championshipDAO, teamDAO, scoreDAO);
+        generateTurnAndReturnChampionshipUseCase = new GenerateTurnAndReturnChampionshipUseCase(championshipDAO);
 
 
         AdminDAO adminDAO = new InMemoryAdminDAO();

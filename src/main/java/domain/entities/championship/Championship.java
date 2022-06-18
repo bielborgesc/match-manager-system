@@ -4,8 +4,8 @@ import domain.entities.round.Round;
 import domain.entities.team.Team;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class Championship {
 
@@ -13,6 +13,7 @@ public class Championship {
     private String name;
     private Date date;
     private LinkedHashMap<Integer, Round> rounds = new LinkedHashMap<>();
+    private List<Team> championshipTeams;
     private TypeEnum typeEnum;
     private CategoryEnum categoryEnum;
 
@@ -71,6 +72,14 @@ public class Championship {
 
     public void addRounds(Round round) {
         this.rounds.put(round.getId(), round);
+    }
+
+    public List<Team> getChampionshipTeams() {
+        return championshipTeams;
+    }
+
+    public void addChampionshipTeams(Team team) {
+        this.championshipTeams.add(team);
     }
 
     @Override
