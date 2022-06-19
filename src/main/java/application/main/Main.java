@@ -61,7 +61,8 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainUI.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/view/MainUI.fxml"));
             Parent parent = loader.load();
             Scene mainScene = new Scene(parent);
             primaryStage.setScene(mainScene);
