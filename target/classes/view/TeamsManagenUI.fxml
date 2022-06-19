@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TeamsManagenUIController">
+    <children>
+        <TableView fx:id="tableView" layoutX="15.0" layoutY="23.0" prefHeight="342.0" prefWidth="573.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="23.0">
+            <columns>
+                <TableColumn fx:id="cId" prefWidth="185.0" text="Código do Time" />
+                <TableColumn fx:id="cTeams" prefWidth="185.0" text="Nome do Time" />
+                <TableColumn fx:id="cChampionship" minWidth="0.0" prefWidth="199.0" text="Nome do Campeonato" />
+            </columns>
+        </TableView>
+        <Pane layoutX="14.0" layoutY="369.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+            <children>
+                <Button fx:id="btnDelete" layoutX="157.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteTeams" prefHeight="34.0" prefWidth="82.0" text="Deletar" />
+                <Button fx:id="btnEdit" layoutX="376.0" layoutY="14.0" mnemonicParsing="false" onAction="#editTeams" prefHeight="34.0" prefWidth="82.0" text="Editar" />
+                <Button fx:id="btnDetail" layoutX="267.0" layoutY="14.0" mnemonicParsing="false" onAction="#detailTeams" prefHeight="34.0" prefWidth="82.0" text="Detalhar" />
+                <Button fx:id="btnNew" layoutX="488.0" layoutY="14.0" mnemonicParsing="false" onAction="#createTeams" prefHeight="34.0" prefWidth="82.0" text="Novo" />
+                <Button fx:id="btnBack" layoutY="14.0" mnemonicParsing="false" onAction="#backToPreviousScene" prefHeight="34.0" prefWidth="82.0" text="Voltar" />
+            </children></Pane>
+    </children>
+
+</AnchorPane>

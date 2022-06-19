@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="395.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TeamsUIController">
+    <children>
+        <Label layoutX="59.0" layoutY="27.0" text="Código do Time:" />
+        <Label layoutX="62.0" layoutY="71.0" text="Nome do Time:" />
+        <Label layoutX="59.0" layoutY="119.0" text="Nome do Campeonato:" />
+        <TextField fx:id="IdTeams" layoutX="151.0" layoutY="22.0" prefHeight="26.0" prefWidth="519.0" />
+        <TextField fx:id="txtNameTeams" layoutX="151.0" layoutY="66.0" prefHeight="26.0" prefWidth="519.0" />
+        <TextField fx:id="txtNameChampionship" layoutX="186.0" layoutY="115.0" prefHeight="26.0" prefWidth="484.0" />
+        <Button fx:id="btnConfirm" layoutX="582.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="39.0" prefWidth="88.0" text="Salvar" />
+        <Button fx:id="btnCancel" layoutX="464.0" layoutY="345.0" mnemonicParsing="false" onAction="#backToPreviousScene" prefHeight="39.0" prefWidth="88.0" text="Cancelar" />
+    </children>
+
+</AnchorPane>
