@@ -1,9 +1,13 @@
-module  application.view{
+module  application.main{
 
     requires javafx.controls;
     requires javafx.fxml;
 
     opens application.main to javafx.fxml;
-
-    exports application.main;
+ 
+    opens view to javafx.fxml;
+    exports view to javafx.fxml;
+    exports application.main to javafx.graphics;
+   
+    
 }
