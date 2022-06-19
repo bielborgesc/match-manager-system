@@ -15,12 +15,13 @@ public class MainUIController {
     private Button btAdmin;
 
     @FXML
-    private void onBtAdminAction() throws IOException{
+    private void onBtAdminAction() throws IOException {
         loadView("/view/AdminAuthentication.fxml", "Login Administrador");
-   
+
     }
-    private void loadView(String absoluteName, String windowName) throws IOException{
-     
+
+    public void loadView(String absoluteName, String windowName) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
         Parent parent = loader.load();
         Stage newStage = new Stage();
@@ -31,5 +32,3 @@ public class MainUIController {
     }
 
 }
-
-

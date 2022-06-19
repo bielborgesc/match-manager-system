@@ -57,6 +57,7 @@ public class Main extends Application{
     private static UpdateAdminUseCase updateAdminUseCase;
     private static CreateAdminUseCase createAdminUseCase;
 
+    private Stage primaryStage = new Stage();
 
     @Override
     public void start(Stage primaryStage) {
@@ -64,14 +65,25 @@ public class Main extends Application{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/view/MainUI.fxml"));
             Parent parent = loader.load();
-            Scene mainScene = new Scene(parent);
-            primaryStage.setScene(mainScene);
+            Scene mScene = new Scene(parent);
+            primaryStage.setScene(mScene);
+            primaryStage.setResizable(false);
+
             primaryStage.setTitle("Match Manager System");
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public void changeScene(String fxml) throws IOException{
+        Parent pane =  FXMLLoader.load(getClass().getResource(fxml));
+        Scene scene = new Scene(pane);
+        Stage thisStage = new Stage();
+        thisStage.setScene(scene);
+        thisStage.show();
+    }
+
 
     public static void main(String[] args) {
        
