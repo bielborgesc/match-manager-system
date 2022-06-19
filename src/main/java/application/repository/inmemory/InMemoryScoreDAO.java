@@ -1,4 +1,4 @@
-package application.repository;
+package application.repository.inmemory;
 
 import domain.entities.score.Score;
 import domain.usecases.score.ScoreDAO;

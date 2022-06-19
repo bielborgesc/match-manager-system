@@ -1,4 +1,4 @@
-package application.repository;
+package application.repository.inmemory;
 
 import domain.entities.match.Match;
 import domain.usecases.match.MatchDAO;

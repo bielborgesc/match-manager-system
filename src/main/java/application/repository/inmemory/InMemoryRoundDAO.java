@@ -1,4 +1,4 @@
-package application.repository;
+package application.repository.inmemory;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

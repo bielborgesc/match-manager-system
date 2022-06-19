@@ -1,10 +1,8 @@
-package application.repository;
+package application.repository.inmemory;
 
 import domain.entities.championship.Championship;
-import domain.entities.match.Match;
 import domain.entities.round.Round;
 import domain.usecases.championship.ChampionshipDAO;
-import domain.usecases.match.MatchDAO;
 
 import java.util.*;
 

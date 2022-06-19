@@ -1,4 +1,4 @@
-package application.repository;
+package application.repository.inmemory;
 
 import domain.entities.team.Team;
 import domain.usecases.team.TeamDAO;
@@ -9,7 +9,6 @@ public class InMemoryTeamDAO implements TeamDAO {
 
     private static final Map<Integer, Team> db = new LinkedHashMap<>();
 
-
     @Override
     public Integer create(Team team) {
         db.put(team.getId(), team);
@@ -18,7 +17,7 @@ public class InMemoryTeamDAO implements TeamDAO {
 
     @Override
     public Optional<Team> findOne(Integer id) {
-        if(db.containsKey(id))
+        if (db.containsKey(id))
             return Optional.of(db.get(id));
         return Optional.empty();
     }
@@ -31,7 +30,7 @@ public class InMemoryTeamDAO implements TeamDAO {
     @Override
     public boolean update(Team team) {
         Integer id = team.getId();
-        if(db.containsKey(id)) {
+        if (db.containsKey(id)) {
             db.replace(id, team);
             return true;
         }
@@ -40,7 +39,7 @@ public class InMemoryTeamDAO implements TeamDAO {
 
     @Override
     public boolean deleteByKey(Integer key) {
-        if(db.containsKey(key)){
+        if (db.containsKey(key)) {
             db.remove(key);
             return true;
         }

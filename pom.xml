@@ -33,6 +33,17 @@
   <dependencies>
 
     <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>13</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-core</artifactId>
     </dependency>
@@ -90,14 +101,20 @@
 
       <!-- Allows the example to be run via 'mvn camel:run' -->
       <plugin>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-maven-plugin</artifactId>
-        <version>3.16.0</version>
-        <configuration>
-          <logClasspath>true</logClasspath>
-          <mainClass>org.example.MainApp</mainClass>
-        </configuration>
-      </plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.6</version>
+                <executions>
+                    <execution>
+                        <!-- Default configuration for running -->
+                        <!-- Usage: mvn clean javafx:run -->
+                        <id>default-cli</id>
+                        <configuration>
+                            <mainClass>application.main.Main</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
     </plugins>
   </build>

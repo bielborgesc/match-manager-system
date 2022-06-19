@@ -1,4 +1,4 @@
-package application.repository;
+package application.repository.inmemory;
 
 import domain.entities.admin.Admin;
 import domain.usecases.admin.AdminDAO;
