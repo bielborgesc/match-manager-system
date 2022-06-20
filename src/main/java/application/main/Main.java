@@ -21,6 +21,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
@@ -57,7 +58,7 @@ public class Main extends Application{
     private static UpdateAdminUseCase updateAdminUseCase;
     private static CreateAdminUseCase createAdminUseCase;
 
-    private Stage primaryStage = new Stage();
+    private static Scene primaryScene;
 
     @Override
     public void start(Stage primaryStage) {
@@ -65,8 +66,8 @@ public class Main extends Application{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/view/MainUI.fxml"));
             Parent parent = loader.load();
-            Scene mScene = new Scene(parent);
-            primaryStage.setScene(mScene);
+            primaryScene = new Scene(parent);
+            primaryStage.setScene(primaryScene);
             primaryStage.setResizable(false);
 
             primaryStage.setTitle("Match Manager System");
@@ -76,14 +77,18 @@ public class Main extends Application{
         }
     }
 
-    public void changeScene(String fxml) throws IOException{
+    public Stage changeScene(String fxml) throws IOException{
         Parent pane =  FXMLLoader.load(getClass().getResource(fxml));
         Scene scene = new Scene(pane);
         Stage thisStage = new Stage();
         thisStage.setScene(scene);
-        thisStage.show();
+        return thisStage;
     }
 
+    
+    public static Scene getPrimaryScene() {
+        return primaryScene;
+    }
 
     public static void main(String[] args) {
        
