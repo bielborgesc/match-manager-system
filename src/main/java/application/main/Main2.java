@@ -1,6 +1,11 @@
 package application.main;
 
 import application.repository.inmemory.*;
+import domain.entities.championship.CategoryEnum;
+import domain.entities.championship.Championship;
+import domain.entities.championship.TypeEnum;
+import domain.entities.score.Score;
+import domain.entities.team.Team;
 import domain.usecases.admin.*;
 import domain.usecases.championship.ChampionshipDAO;
 import domain.usecases.championship.CreateChampionshipUseCase;
@@ -10,16 +15,17 @@ import domain.usecases.match.*;
 import domain.usecases.round.*;
 import domain.usecases.score.*;
 import domain.usecases.team.*;
+import domain.utils.exceptions.EntityAlreadyExistsException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
+import java.util.Date;
 
-public class Main extends Application{
+public class Main2{
     private static CreateTeamUseCase createTeamUseCase;
     private static FindTeamUseCase findTeamUseCase;
     private static UpdateTeamUseCase updateTeamUseCase;
@@ -50,24 +56,41 @@ public class Main extends Application{
     private static CreateAdminUseCase createAdminUseCase;
 
 
-    @Override
-    public void start(Stage primaryStage) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainUI.fxml"));
-            Parent parent = loader.load();
-            Scene mainScene = new Scene(parent);
-            primaryStage.setScene(mainScene);
-            primaryStage.setTitle("Match Manager System");
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-       
+    public static void main(String[] args) throws EntityAlreadyExistsException {
         configureInjection();
-        launch(args);
+        // Criando Times
+        createTeamUseCase.insert(new Team(1, "Corinthias"));
+        createTeamUseCase.insert(new Team(2,"São Paulo"));
+        createTeamUseCase.insert(new Team(3, "Bahia"));
+        createTeamUseCase.insert(new Team(4, "Santos"));
+        createTeamUseCase.insert(new Team(5, "Sporte"));
+        createTeamUseCase.insert(new Team(6, "Juninho"));
+        createTeamUseCase.insert(new Team(7, "Palmeiras"));
+        createTeamUseCase.insert(new Team(8, "Renato"));
+
+        //Criando Classificações
+        createScoreUseCase.insert(new Score(1));
+        createScoreUseCase.insert(new Score(2));
+        createScoreUseCase.insert(new Score(3));
+        createScoreUseCase.insert(new Score(4));
+        createScoreUseCase.insert(new Score(5));
+        createScoreUseCase.insert(new Score(6));
+        createScoreUseCase.insert(new Score(7));
+        createScoreUseCase.insert(new Score(8));
+
+        //Criando campeonato
+        createChampionshipUseCase.insert(new Championship(1,  "Brasileirão",  new Date(), TypeEnum.FUTEBOL, CategoryEnum.ADULT));
+
+        //Adicionando Timems em campeonato
+        findChampionshipUseCase.findOne(1).orElseThrow().addChampionshipTeams(findTeamUseCase.findOne(1).orElseThrow());
+        findChampionshipUseCase.findOne(1).orElseThrow().addChampionshipTeams(findTeamUseCase.findOne(2).orElseThrow());
+        findChampionshipUseCase.findOne(1).orElseThrow().addChampionshipTeams(findTeamUseCase.findOne(3).orElseThrow());
+        findChampionshipUseCase.findOne(1).orElseThrow().addChampionshipTeams(findTeamUseCase.findOne(4).orElseThrow());
+
+
+        //Gerando Campeonato
+        Championship championship = generateTurnAndReturnChampionshipUseCase.generate(1);
+//        System.out.println(championship.getRounds());
 
     }
 

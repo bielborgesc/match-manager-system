@@ -3,6 +3,7 @@ package domain.entities.championship;
 import domain.entities.round.Round;
 import domain.entities.team.Team;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Championship {
     private String name;
     private Date date;
     private LinkedHashMap<Integer, Round> rounds = new LinkedHashMap<>();
-    private List<Team> championshipTeams;
+    private List<Team> championshipTeams = new ArrayList<>();
     private TypeEnum typeEnum;
     private CategoryEnum categoryEnum;
 
@@ -84,14 +85,8 @@ public class Championship {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Championship{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", date=").append(date);
-        sb.append(", rounds=").append(rounds);
-        sb.append(", typeEnum=").append(typeEnum);
-        sb.append(", categoryEnum=").append(categoryEnum);
-        sb.append('}');
+        final StringBuffer sb = new StringBuffer("name: ").append(name).append('\n');
+        sb.append("rounds: ").append(rounds).append('\n');
         return sb.toString();
     }
 }

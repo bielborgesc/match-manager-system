@@ -31,9 +31,9 @@ public class Round {
 
     @Override
     public String toString() {
-        return "Round{" +
-                "id=" + id +
-                ", arrMatch=" + arrMatch +
-                '}';
+        final StringBuilder sb = new StringBuilder("Round: ");
+        sb.append("id: ").append(id).append('\n');
+        sb.append("arrMatch=").append(arrMatch).append('\n');
+        return sb.toString();
     }
 }

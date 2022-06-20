@@ -4,13 +4,13 @@ import domain.entities.championship.Championship;
 import domain.entities.team.Team;
 import domain.usecases.team.TeamDAO;
 
-public class AddTeamtochampionshipUseCase {
+public class AddTeamToChampionshipUseCase {
     
     private TeamDAO teamDAO;
     private ChampionshipDAO championshipDAO;
 
 
-    public AddTeamtochampionshipUseCase(TeamDAO teamDAO, ChampionshipDAO championshipDAO) {
+    public AddTeamToChampionshipUseCase(TeamDAO teamDAO, ChampionshipDAO championshipDAO) {
         this.teamDAO = teamDAO;
         this.championshipDAO = championshipDAO;
     }

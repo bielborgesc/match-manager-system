@@ -13,7 +13,6 @@ public class GenerateTurnAndReturnChampionshipUseCase {
     private ChampionshipDAO championshipDAO;
 
     public GenerateTurnAndReturnChampionshipUseCase(ChampionshipDAO championshipDAO) {
-
         this.championshipDAO = championshipDAO;
     }
 
@@ -57,6 +56,7 @@ public class GenerateTurnAndReturnChampionshipUseCase {
                     if (countMatches == (teams.size() / 2)) {
                         championship.addRounds(round);
                         idRound++;
+                        System.out.println(round);
                         round = new Round(idRound);
                         countMatches = 0;
                     }
