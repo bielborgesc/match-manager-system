@@ -18,7 +18,10 @@ public class MainUIController {
     private Button btAdmin;
 
     @FXML
-    private Button btUser;
+    private Button btUserChamp;
+
+    @FXML
+    private Button btUserTimes;
 
     @FXML
     private void onBtAdminAction(ActionEvent event) throws IOException {
@@ -28,14 +31,20 @@ public class MainUIController {
     }
 
     @FXML
-    private void onBtUser(ActionEvent event) throws IOException {
+    private void onBtChampionshipActionUser(ActionEvent event) throws IOException {
         Stage thisstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        loadView("/view/ChampionshipUI.fxml", "Campeonatos", thisstage);
+        loadView("/view/ChampionshipManagementUI.fxml", "Campeonatos", thisstage);
+
+    }
+
+    @FXML
+    private void onBtTimesAction(ActionEvent event) throws IOException {
+        Stage thisstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        loadView("/view/TeamsUserUI.fxml", "Times", thisstage);
 
     }
 
     public void loadView(String absoluteName, String windowName, Stage fatherStage) throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
         Parent parent = loader.load();
         Stage newStage = new Stage();
@@ -47,5 +56,6 @@ public class MainUIController {
         newStage.initModality(Modality.WINDOW_MODAL);
         newStage.show();
     }
+
 
 }
