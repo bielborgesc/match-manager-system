@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="541.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.ChampionshipUserUIController">
+    <children>
+        <TableView layoutX="15.0" layoutY="24.0" prefHeight="342.0" prefWidth="573.0" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="24.0">
+            <columns>
+                <TableColumn prefWidth="152.0" text="Código do Campeonato" />
+                <TableColumn prefWidth="108.0" text="Nome " />
+                <TableColumn prefWidth="110.0" text="Data" />
+                <TableColumn prefWidth="175.0" text="Tipo de Esporte" />
+                <TableColumn prefWidth="181.0" text="Tipo de Categoria" />
+            </columns>
+        </TableView>
+        <Pane layoutX="14.0" layoutY="369.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+            <children>
+                <Button fx:id="btnDetail" layoutX="531.0" layoutY="14.0" mnemonicParsing="false" onAction="#detailChampionship" prefHeight="34.0" prefWidth="82.0" text="Detalhar" />
+                <Button fx:id="btnNew" layoutX="645.0" layoutY="14.0" mnemonicParsing="false" onAction="#createChampionship" prefHeight="34.0" prefWidth="82.0" text="Novo" />
+                <Button fx:id="btnBack" layoutY="14.0" mnemonicParsing="false" onAction="#backToPreviousScene" prefHeight="34.0" prefWidth="82.0" text="Voltar" />
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

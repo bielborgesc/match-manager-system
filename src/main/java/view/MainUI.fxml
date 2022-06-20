@@ -13,7 +13,7 @@
             <Font name="Arial" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="btUserTimes" layoutX="437.0" layoutY="275.0" mnemonicParsing="false" onAction="#onBtTimesAction" prefHeight="25.0" prefWidth="150.0" text="Times" />
+      <Button fx:id="btUserTimes" layoutX="437.0" layoutY="275.0" mnemonicParsing="false" onAction="#onBtTimesActionUser" prefHeight="25.0" prefWidth="150.0" text="Times" />
       <Button fx:id="btUserChamp" layoutX="233.0" layoutY="275.0" mnemonicParsing="false" onAction="#onBtChampionshipActionUser" prefHeight="25.0" prefWidth="150.0" text="Campeonatos" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>

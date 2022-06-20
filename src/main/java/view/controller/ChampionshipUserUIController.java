@@ -10,11 +10,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class TeamsUserUIController {
-    public void detailTeams(ActionEvent actionEvent) {
+public class ChampionshipUserUIController {
+    public void detailChampionship(ActionEvent actionEvent) {
     }
 
-    public void createTeams(ActionEvent actionEvent) {
+    public void createChampionship(ActionEvent actionEvent) {
     }
 
     public void backToPreviousScene(ActionEvent event) throws IOException{
