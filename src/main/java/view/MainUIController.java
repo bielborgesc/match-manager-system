@@ -18,9 +18,19 @@ public class MainUIController {
     private Button btAdmin;
 
     @FXML
+    private Button btUser;
+
+    @FXML
     private void onBtAdminAction(ActionEvent event) throws IOException {
         Stage thisstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         loadView("/view/AdminAuthentication.fxml", "Login Administrador", thisstage);
+
+    }
+
+    @FXML
+    private void onBtUser(ActionEvent event) throws IOException {
+        Stage thisstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        loadView("/view/ChampionshipUI.fxml", "Campeonatos", thisstage);
 
     }
 
