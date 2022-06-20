@@ -24,8 +24,8 @@ public class AdmimAuthenticationController {
     private PasswordField password;
     @FXML
     private TextField userName;
-
     @FXML
+   
     private void onbtEntrar(ActionEvent event) throws IOException {
         if (checkUserPassword()) {
 
