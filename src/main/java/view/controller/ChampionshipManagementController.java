@@ -47,6 +47,9 @@ public class ChampionshipManagementController implements Initializable {
     private TableColumn<Championship, Championship> tColumnEdit;
 
     @FXML
+    private TableColumn<Championship, Championship> tColumnDelete;
+
+    @FXML
     private Button btVoltar;
     @FXML
     private Button btDeletar;
@@ -92,6 +95,23 @@ public class ChampionshipManagementController implements Initializable {
                         event -> System.out.println("Table edit"));
             }
         });
+        tColumnDelete.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tColumnDelete.setCellFactory(param -> new TableCell<Championship, Championship>() {
+            private final Button button = new Button(" Deletar ");
+
+            @Override
+            protected void updateItem(Championship obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(
+                        event -> System.out.println("Table Delete"));
+            }
+        });
+        
     }
 
     @Override
