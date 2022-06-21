@@ -49,6 +49,7 @@ public class AdmimAuthenticationController {
             alert.setContentText("Login bem sucedido");
             Stage nStage = main.changeScene("/view/AdminManagementUI.fxml");
             nStage.initOwner(main.getPrimaryScene().getWindow()); 
+            nStage.setResizable(false);
             nStage.initModality(Modality.WINDOW_MODAL);         
             nStage.show();
             alert.show();
