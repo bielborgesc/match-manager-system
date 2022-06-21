@@ -4,6 +4,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import domain.entities.championship.CategoryEnum;
@@ -16,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -76,9 +78,10 @@ public class ChampionshipManagementController implements Initializable {
         List<Championship> list = findChampionshipUseCase.findAll();
         championshipsList = FXCollections.observableArrayList(list);
         tableViewChampionships.setItems(championshipsList);
+        initEditDeleteButtons();
     }
 
-    private void initEditButtons() {
+    private void initEditDeleteButtons() {
         tColumnEdit.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         tColumnEdit.setCellFactory(param -> new TableCell<Championship, Championship>() {
             private final Button button = new Button(" Editar ");
@@ -108,16 +111,27 @@ public class ChampionshipManagementController implements Initializable {
                 }
                 setGraphic(button);
                 button.setOnAction(
-                        event -> System.out.println("Table Delete"));
+                        event -> removeEntity(obj));
             }
         });
         
     }
 
+    private void removeEntity(Championship obj) {
+		Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Você quer mesmo deletar?");
+
+		if (result.get() == ButtonType.OK) {
+
+				removeChampionshipUsecase.remove(obj);
+				updateTableView();
+			
+		}
+	}
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initializeNodes();
-        initEditButtons();
         updateTableView();
     }
 

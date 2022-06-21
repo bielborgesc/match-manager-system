@@ -6,19 +6,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.TeamsManagenUIController">
+<AnchorPane prefHeight="400.0" prefWidth="613.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.TeamsManagenUIController">
     <children>
         <TableView fx:id="tableViewTeam" layoutX="15.0" layoutY="23.0" prefHeight="342.0" prefWidth="573.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="23.0">
             <columns>
                 <TableColumn fx:id="tColumnID" prefWidth="120.0" text="Código do Time" />
-                <TableColumn fx:id="tColumnName" prefWidth="446.0" text="Nome do Time" />
+                <TableColumn fx:id="tColumnName" prefWidth="291.0" text="Nome do Time" />
+            <TableColumn fx:id="tColumnEdit" prefWidth="82.0" />
+            <TableColumn fx:id="tColumnDelete" prefWidth="82.0" />
             </columns>
         </TableView>
         <Pane layoutX="14.0" layoutY="369.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
             <children>
-                <Button fx:id="btnDelete" layoutX="266.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteTeams" prefHeight="34.0" prefWidth="82.0" text="Deletar" />
-                <Button fx:id="btnEdit" layoutX="376.0" layoutY="14.0" mnemonicParsing="false" onAction="#editTeams" prefHeight="34.0" prefWidth="82.0" text="Editar" />
-                <Button fx:id="btnNew" layoutX="488.0" layoutY="14.0" mnemonicParsing="false" onAction="#createTeams" prefHeight="34.0" prefWidth="82.0" text="Novo" />
+                <Button fx:id="btnNew" layoutX="501.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Novo" />
                 <Button fx:id="btnBack" layoutY="14.0" mnemonicParsing="false" onAction="#backToPreviousScene" prefHeight="34.0" prefWidth="82.0" text="Voltar" />
             </children></Pane>
     </children>

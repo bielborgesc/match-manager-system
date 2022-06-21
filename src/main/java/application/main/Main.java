@@ -9,10 +9,7 @@ import domain.entities.round.Round;
 import domain.entities.score.Score;
 import domain.entities.team.Team;
 import domain.usecases.admin.*;
-import domain.usecases.championship.ChampionshipDAO;
-import domain.usecases.championship.CreateChampionshipUseCase;
-import domain.usecases.championship.FindChampionshipUseCase;
-import domain.usecases.championship.GenerateTurnAndReturnChampionshipUseCase;
+import domain.usecases.championship.*;
 import domain.usecases.match.*;
 import domain.usecases.round.*;
 import domain.usecases.score.*;
@@ -53,6 +50,7 @@ public class Main extends Application{
     public static AddMatchInRoundUseCase addMatchInRoundUseCase;
     
     public static AddRoundInChampionshipUseCase addRoundInChampionshipUseCase;
+    public static RemoveChampionshipUsecase removeChampionshipUsecase;
     public static CreateChampionshipUseCase createChampionshipUseCase;
     public static FindChampionshipUseCase findChampionshipUseCase;
     public static GenerateTurnAndReturnChampionshipUseCase generateTurnAndReturnChampionshipUseCase;
@@ -150,7 +148,7 @@ public class Main extends Application{
         createChampionshipUseCase = new CreateChampionshipUseCase(championshipDAO);
         findChampionshipUseCase = new FindChampionshipUseCase(championshipDAO);
         generateTurnAndReturnChampionshipUseCase = new GenerateTurnAndReturnChampionshipUseCase(championshipDAO);
-
+        removeChampionshipUsecase = new RemoveChampionshipUsecase(championshipDAO);
 
         AdminDAO adminDAO = new InMemoryAdminDAO();
         createAdminUseCase = new CreateAdminUseCase(adminDAO);

@@ -1,22 +1,28 @@
 package view.controller;
 
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
+
+
+import domain.entities.championship.TypeEnum;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
-import javafx.stage.Stage;
-
-
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.scene.Node;
 
 import domain.entities.team.Team;
 
@@ -33,6 +39,11 @@ public class TeamsManagenUIController implements Initializable {
     private TableColumn<Team, Integer> tColumnID;
     @FXML
     private TableColumn<Team, String> tColumnName;
+    @FXML
+    private TableColumn<Team, Team> tColumnEdit;
+
+    @FXML
+    private TableColumn<Team, Team> tColumnDelete;
 
 
 
@@ -41,21 +52,57 @@ public class TeamsManagenUIController implements Initializable {
         List<Team> list = findTeamUseCase.findAll();
         teamList = FXCollections.observableArrayList(list);
         tableViewTeam.setItems(teamList);;
+        initEditDeleteButtons();
     }
 
 
+    private void initEditDeleteButtons() {
+        tColumnEdit.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tColumnEdit.setCellFactory(param -> new TableCell<Team, Team>() {
+            private final Button button = new Button(" Editar ");
 
-    public void deleteTeams(ActionEvent actionEvent) {
+            @Override
+            protected void updateItem(Team obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(
+                        event -> System.out.println("Table edit"));
+            }
+        });
+
+        tColumnDelete.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tColumnDelete.setCellFactory(param -> new TableCell<Team, Team>() {
+            private final Button button = new Button(" Deletar ");
+
+            @Override
+            protected void updateItem(Team obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(
+                        event -> removeEntity(obj));
+            }
+        });
+        
     }
 
-    public void editTeams(ActionEvent actionEvent) {
-    }
+    private void removeEntity(Team obj) {
+		Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Você quer mesmo deletar?");
 
-    public void detailTeams(ActionEvent actionEvent) {
-    }
+		if (result.get() == ButtonType.OK) {
 
-    public void createTeams(ActionEvent actionEvent) {
-    }
+				removeTeamUseCase.remove(obj);
+				updateTableView();
+			
+		}
+	}
 
     @FXML
     public void backToPreviousScene(ActionEvent event) {
