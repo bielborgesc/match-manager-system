@@ -112,7 +112,7 @@ public class SqliteMatchDAO implements MatchDAO {
     @Override
     public boolean delete(Match match) {
         if (match == null || match.getId() == 0)
-            throw new IllegalArgumentException("Team Id must not be null.");
+            throw new IllegalArgumentException("Match Id must not be null.");
         return deleteByKey(match.getId());
     }
 }
