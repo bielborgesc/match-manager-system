@@ -17,14 +17,19 @@ import java.util.Optional;
 
 public class SqliteChampionshipDAO implements ChampionshipDAO {
 
+    private static java.sql.Date convert(java.util.Date uDate) {
+        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        return sDate;
+    }
+
     @Override
     public Integer create(Championship championship) {
         String sql = "INSERT INTO Championship(name, date, typeEnum, categoryEnum) VALUES (?, ?, ?, ?)";
         try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)){
             stmt.setString(1, championship.getName());
-            stmt.setDate(2, (Date) championship.getDate());
+            stmt.setDate(2, convert(championship.getDate()));
             stmt.setString(3, championship.getTypeEnum().toString());
-            stmt.setString(3, championship.getCategoryEnum().toString());
+            stmt.setString(4, championship.getCategoryEnum().toString());
             stmt.execute();
             ResultSet resultSet = stmt.getGeneratedKeys();
             return resultSet.getInt(1);
