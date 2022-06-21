@@ -117,14 +117,14 @@ public class Main extends Application {
         createScoreUseCase.insert(new Score(8));
 
         // Criando campeonato
-        createChampionshipUseCase.insert(c1);
-        createChampionshipUseCase.insert(c2);
+        // createChampionshipUseCase.insert(c1);
+        // createChampionshipUseCase.insert(c2);
   
         // Adicionando Timems em campeonato
 
-        createTeamUseCase.insert(t1);
-        createTeamUseCase.insert(t3);
-        createTeamUseCase.insert(t2);
+        // createTeamUseCase.insert(t1);
+        // createTeamUseCase.insert(t3);
+        // createTeamUseCase.insert(t2);
 
         
 
