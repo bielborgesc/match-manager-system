@@ -17,46 +17,52 @@ import domain.usecases.match.*;
 import domain.usecases.round.*;
 import domain.usecases.score.*;
 import domain.usecases.team.*;
+import domain.utils.exceptions.EntityAlreadyExistsException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import view.controller.ChampionshipManagementController;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Main extends Application{
-    private static CreateTeamUseCase createTeamUseCase;
-    private static FindTeamUseCase findTeamUseCase;
-    private static UpdateTeamUseCase updateTeamUseCase;
-    private static RemoveTeamUseCase removeTeamUseCase;
+    public static CreateTeamUseCase createTeamUseCase;
+    public static FindTeamUseCase findTeamUseCase;
+    public static UpdateTeamUseCase updateTeamUseCase;
+    public static RemoveTeamUseCase removeTeamUseCase;
+    
+    public static CreateScoreUseCase createScoreUseCase;
+    public static FindScoreUseCase findScoreUseCase;
+    public static RemoveScoreUseCase removeScoreUseCase;
+    public static UpdateScoreUseCase updateScoreUseCase;
+    
+    public static CreateMatchUseCase createMatchUseCase;
+    public static FindMatchUseCase findMatchUseCase;
+    public static SetTeamPointsUseCase setTeamPointsUseCase;
+    public static FindMatchByIdTeamUseCase findMatchByIdTeamUseCase;
+    
+    public static CreateRoundUseCase createRoundUseCase;
+    public static FindRoundUseCase findRoundUseCase;
+    public static AddMatchInRoundUseCase addMatchInRoundUseCase;
+    
+    public static AddRoundInChampionshipUseCase addRoundInChampionshipUseCase;
+    public static CreateChampionshipUseCase createChampionshipUseCase;
+    public static FindChampionshipUseCase findChampionshipUseCase;
+    public static GenerateTurnAndReturnChampionshipUseCase generateTurnAndReturnChampionshipUseCase;
+    
+    public static FindAdminUseCase findAdminUseCase;
+    public static RemoveAdminUseCase removeAdminUseCase;
+    public static UpdateAdminUseCase updateAdminUseCase;
+    public static CreateAdminUseCase createAdminUseCase;
 
-    private static CreateScoreUseCase createScoreUseCase;
-    private static FindScoreUseCase findScoreUseCase;
-    private static RemoveScoreUseCase removeScoreUseCase;
-    private static UpdateScoreUseCase updateScoreUseCase;
-
-    private static CreateMatchUseCase createMatchUseCase;
-    private static FindMatchUseCase findMatchUseCase;
-    private static SetTeamPointsUseCase setTeamPointsUseCase;
-    private static FindMatchByIdTeamUseCase findMatchByIdTeamUseCase;
-
-    private static CreateRoundUseCase createRoundUseCase;
-    private static FindRoundUseCase findRoundUseCase;
-    private static AddMatchInRoundUseCase addMatchInRoundUseCase;
-
-    private static AddRoundInChampionshipUseCase addRoundInChampionshipUseCase;
-    private static CreateChampionshipUseCase createChampionshipUseCase;
-    private static FindChampionshipUseCase findChampionshipUseCase;
-    private static GenerateTurnAndReturnChampionshipUseCase generateTurnAndReturnChampionshipUseCase;
-
-    private static FindAdminUseCase findAdminUseCase;
-    private static RemoveAdminUseCase removeAdminUseCase;
-    private static UpdateAdminUseCase updateAdminUseCase;
-    private static CreateAdminUseCase createAdminUseCase;
+    
 
     private static Scene primaryScene;
 
@@ -90,9 +96,24 @@ public class Main extends Application{
         return primaryScene;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException, EntityAlreadyExistsException {
        
         configureInjection();
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Championship c1 = new Championship(1, "Test1", dateFormat.parse("20-02-2030"), TypeEnum.FUTEBOL, CategoryEnum.ADULT);
+        Championship c2 = new Championship(2, "Test1", dateFormat.parse("20-03-2010"), TypeEnum.FUTEBOL, CategoryEnum.ADULT);
+        
+        Team t1 = new Team(1,"Bahia");
+        Team t2 = new Team(3,"Bahia");
+        Team t3 = new Team(4,"Bahia");
+
+        createTeamUseCase.insert(t1);
+        createTeamUseCase.insert(t3);
+        createTeamUseCase.insert(t2);
+
+        createChampionshipUseCase.insert(c1);
+        createChampionshipUseCase.insert(c2);
 
         launch(args);;
 
@@ -100,6 +121,7 @@ public class Main extends Application{
 
 
     private static void configureInjection() {
+        
         TeamDAO teamDAO = new InMemoryTeamDAO();
         createTeamUseCase = new CreateTeamUseCase(teamDAO);
         findTeamUseCase = new FindTeamUseCase(teamDAO);

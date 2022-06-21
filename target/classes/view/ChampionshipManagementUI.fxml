@@ -6,24 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="466.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="466.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.ChampionshipManagementController">
     <children>
-        <TableView layoutX="15.0" layoutY="24.0" prefHeight="342.0" prefWidth="573.0" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="24.0">
+        <TableView fx:id="tableViewChampionships" layoutX="15.0" layoutY="24.0" prefHeight="342.0" prefWidth="573.0" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="24.0">
             <columns>
-                <TableColumn prefWidth="152.0" text="Código do Campeonato" />
-                <TableColumn prefWidth="186.0" text="Nome " />
-                <TableColumn prefWidth="104.0" text="Data" />
-                <TableColumn prefWidth="152.0" text="Tipo de Esporte" />
-            <TableColumn prefWidth="185.0" text="Tipo de Categoria" />
+                <TableColumn fx:id="tColumnID" prefWidth="152.0" text="Código do Campeonato" />
+                <TableColumn fx:id="tColumnName" prefWidth="186.0" text="Nome " />
+                <TableColumn fx:id="tColumnData" prefWidth="104.0" text="Data" />
+                <TableColumn fx:id="tColumnSport" prefWidth="152.0" text="Tipo de Esporte" />
+            <TableColumn fx:id="tColumnType" prefWidth="185.0" text="Tipo de Categoria" />
             </columns>
         </TableView>
         <Pane layoutX="14.0" layoutY="369.0" prefHeight="61.0" prefWidth="573.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
             <children>
-                <Button layoutX="286.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Deletar" />
-                <Button layoutX="557.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Editar" />
-                <Button layoutX="420.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Detalhar" />
-                <Button layoutX="692.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Novo" />
-                <Button layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Voltar" />
+                <Button fx:id="btDeletar" layoutX="286.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Deletar" />
+                <Button fx:id="btEditar" layoutX="557.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Editar" />
+                <Button fx:id="btDetalhar" layoutX="420.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Detalhar" />
+                <Button fx:id="btNovo" layoutX="692.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="Novo" />
+                <Button fx:id="btVoltar" layoutY="14.0" mnemonicParsing="false" onAction="#onbtVoltar" prefHeight="34.0" prefWidth="82.0" text="Voltar" />
             </children></Pane>
     </children>
 </AnchorPane>

@@ -1,4 +1,4 @@
-package view;
+package view.controller;
 
 import java.io.IOException;
 
@@ -18,39 +18,34 @@ public class MainUIController {
     private Button btAdmin;
 
     @FXML
-    private Button btUserChamp;
+    private Button btTeams;
 
     @FXML
-    private Button btUserTimes;
+    private Button btChampionship;
 
     @FXML
     private void onBtAdminAction(ActionEvent event) throws IOException {
         Stage thisstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         loadView("/view/AdminAuthentication.fxml", "Login Administrador", thisstage);
+
     }
 
     @FXML
-    private void onBtChampionshipActionUser(ActionEvent event) throws IOException {
+    private void onbtChampionship(ActionEvent event) throws IOException {
         Stage thisstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         loadView("/view/ChampionshipUserUI.fxml", "Campeonatos", thisstage);
+
     }
 
     @FXML
-    private void onBtTimesActionUser(ActionEvent event) throws IOException {
+    private void onbtTeams(ActionEvent event) throws IOException {
         Stage thisstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         loadView("/view/TeamsUserUI.fxml", "Times", thisstage);
-    }
-
-    @FXML
-    private void onBtChampionshipAction(ActionEvent event) throws IOException {
-        Stage thisstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        loadView("/view/ChampionshipManagementUI.fxml", "Campeonatos", thisstage);
 
     }
-
-
 
     public void loadView(String absoluteName, String windowName, Stage fatherStage) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
         Parent parent = loader.load();
         Stage newStage = new Stage();
@@ -62,6 +57,5 @@ public class MainUIController {
         newStage.initModality(Modality.WINDOW_MODAL);
         newStage.show();
     }
-
 
 }
