@@ -74,17 +74,15 @@ public class Match {
         this.idRound = idRound;
     }
 
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Match{");
-        sb.append("id=").append(id);
-        sb.append(", teamA=").append(teamA);
-        sb.append(", teamB=").append(teamB);
-        sb.append(", teamPointsA=").append(teamPointsA);
-        sb.append(", teamPointsB=").append(teamPointsB);
-        sb.append(", idRound=").append(idRound);
-        sb.append(", isFinished=").append(isFinished);
-        sb.append('}');
+        final StringBuffer sb = new StringBuffer("Match: ");
+        sb.append("id: ").append(id).append('\n');
+        sb.append(teamA.getName()).append(" X ");
+        sb.append(teamB.getName()).append('\n');
+        sb.append("teamPointsA = ").append(teamPointsA).append('\n');
+        sb.append("teamPointsB = ").append(teamPointsB).append('\n');
         return sb.toString();
     }
 }

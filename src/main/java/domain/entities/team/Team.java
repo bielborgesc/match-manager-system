@@ -1,5 +1,7 @@
 package domain.entities.team;
 
+import java.util.Arrays;
+
 public class Team {
     private int Id;
     private String name;
