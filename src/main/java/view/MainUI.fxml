@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="291.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.MainUIController">
+   <children>
+      <Button fx:id="btAdmin" layoutX="101.0" layoutY="217.0" mnemonicParsing="false" onAction="#onBtAdminAction" prefHeight="25.0" prefWidth="150.0" text="Administrador" />
+      <Text layoutX="251.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="𝓜𝓪𝓽𝓬𝓱-𝓜𝓪𝓷𝓪𝓰𝓮𝓻" wrappingWidth="225.0">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="btChampionship" layoutX="288.0" layoutY="217.0" mnemonicParsing="false" onAction="#onbtChampionship" prefHeight="25.0" prefWidth="150.0" text="Campeonatos" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="288.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/mainMenuImage.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btTeams" layoutX="476.0" layoutY="217.0" mnemonicParsing="false" onAction="#onbtTeams" prefHeight="25.0" prefWidth="150.0" text="Times" />
+   </children>
+</AnchorPane>
