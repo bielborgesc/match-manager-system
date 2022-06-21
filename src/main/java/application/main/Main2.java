@@ -2,6 +2,9 @@ package application.main;
 
 import application.repository.inmemory.*;
 import application.repository.sqlite.DatabaseBuilder;
+import application.repository.sqlite.SqliteAdminDAO;
+import application.repository.sqlite.SqliteChampionshipDAO;
+import application.repository.sqlite.SqliteTeamDAO;
 import domain.entities.championship.CategoryEnum;
 import domain.entities.championship.Championship;
 import domain.entities.championship.TypeEnum;
@@ -54,15 +57,6 @@ public class Main2{
 
     public static void main(String[] args) throws EntityAlreadyExistsException {
         configureInjection();
-        // Criando Times
-        createTeamUseCase.insert(new Team(1, "Corinthias"));
-        createTeamUseCase.insert(new Team(2,"São Paulo"));
-        createTeamUseCase.insert(new Team(3, "Bahia"));
-        createTeamUseCase.insert(new Team(4, "Santos"));
-        createTeamUseCase.insert(new Team(5, "Sporte"));
-        createTeamUseCase.insert(new Team(6, "Juninho"));
-        createTeamUseCase.insert(new Team(7, "Palmeiras"));
-        createTeamUseCase.insert(new Team(8, "Renato"));
 
         //Criando Classificações
         createScoreUseCase.insert(new Score(1));
@@ -86,14 +80,14 @@ public class Main2{
 
 
         //Gerando Campeonato
-//        List<Score> resultTable = generateTurnAndReturnChampionshipUseCase.generateResult(1);
-//        System.out.println(resultTable);
+        List<Score> resultTable = generateTurnAndReturnChampionshipUseCase.generateResult(1);
+        System.out.println(resultTable);
 
 
     }
 
     private static void configureInjection() {
-        TeamDAO teamDAO = new InMemoryTeamDAO();
+        TeamDAO teamDAO = new SqliteTeamDAO();
         createTeamUseCase = new CreateTeamUseCase(teamDAO);
         findTeamUseCase = new FindTeamUseCase(teamDAO);
         updateTeamUseCase = new UpdateTeamUseCase(teamDAO);
@@ -116,14 +110,14 @@ public class Main2{
         findRoundUseCase = new FindRoundUseCase(roundDAO);
         addMatchInRoundUseCase = new AddMatchInRoundUseCase(matchDAO, roundDAO);
 
-        ChampionshipDAO championshipDAO = new InMemoryChampionshipDAO();
+        ChampionshipDAO championshipDAO = new SqliteChampionshipDAO();
         addRoundInChampionshipUseCase = new AddRoundInChampionshipUseCase(roundDAO, championshipDAO);
         createChampionshipUseCase = new CreateChampionshipUseCase(championshipDAO);
         findChampionshipUseCase = new FindChampionshipUseCase(championshipDAO);
         generateTurnAndReturnChampionshipUseCase = new GenerateTurnAndReturnChampionshipUseCase(championshipDAO, scoreDAO);
 
 
-        AdminDAO adminDAO = new InMemoryAdminDAO();
+        AdminDAO adminDAO = new SqliteAdminDAO();
         createAdminUseCase = new CreateAdminUseCase(adminDAO);
         findAdminUseCase = new FindAdminUseCase(adminDAO);
         removeAdminUseCase = new RemoveAdminUseCase(adminDAO);

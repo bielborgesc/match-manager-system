@@ -30,6 +30,16 @@ public class InMemoryChampionshipDAO implements ChampionshipDAO {
     }
 
     @Override
+    public List<Round> getRoundsInChampionship(Integer idChampionship) {
+        return null;
+    }
+
+    @Override
+    public List<Team> getTeamsInChampionship(Integer idChampionship) {
+        return null;
+    }
+
+    @Override
     public Integer create(Championship championship) {
         db.put(championship.getId(), championship);
         return championship.getId();

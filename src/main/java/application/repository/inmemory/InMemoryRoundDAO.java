@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 
 
+import domain.entities.match.Match;
 import domain.entities.round.Round;
 import domain.usecases.round.RoundDAO;
 

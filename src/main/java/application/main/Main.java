@@ -1,6 +1,8 @@
 package application.main;
 
 import application.repository.inmemory.*;
+import application.repository.sqlite.SqliteAdminDAO;
+import application.repository.sqlite.SqliteTeamDAO;
 import domain.usecases.admin.*;
 import domain.usecases.championship.ChampionshipDAO;
 import domain.usecases.championship.CreateChampionshipUseCase;
@@ -73,7 +75,7 @@ public class Main extends Application{
 
 
     private static void configureInjection() {
-        TeamDAO teamDAO = new InMemoryTeamDAO();
+        TeamDAO teamDAO = new SqliteTeamDAO();
         createTeamUseCase = new CreateTeamUseCase(teamDAO);
         findTeamUseCase = new FindTeamUseCase(teamDAO);
         updateTeamUseCase = new UpdateTeamUseCase(teamDAO);
@@ -103,7 +105,7 @@ public class Main extends Application{
         generateTurnAndReturnChampionshipUseCase = new GenerateTurnAndReturnChampionshipUseCase(championshipDAO, scoreDAO);
 
 
-        AdminDAO adminDAO = new InMemoryAdminDAO();
+        AdminDAO adminDAO = new SqliteAdminDAO();
         createAdminUseCase = new CreateAdminUseCase(adminDAO);
         findAdminUseCase = new FindAdminUseCase(adminDAO);
         removeAdminUseCase = new RemoveAdminUseCase(adminDAO);
