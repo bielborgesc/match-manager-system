@@ -39,7 +39,7 @@ public class InMemoryMatchDAO implements MatchDAO {
     }
 
     @Override
-    public LinkedHashMap<Integer, Match> findMatchByIdTeam(Integer idTeam) {
+    public Match findMatchByIdTeam(Integer idTeam) {
         LinkedHashMap<Integer, Match> arrMatches = new LinkedHashMap<>();
         for (Match match : db.values()) {
             if (match.getTeamA().getId() == idTeam || match.getTeamB().getId() == idTeam) {

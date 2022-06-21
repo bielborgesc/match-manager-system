@@ -81,7 +81,7 @@ public class SqliteChampionshipDAO implements ChampionshipDAO {
 
         try(PreparedStatement stmt = ConnectionFactory.createPreparedStatement(sql)){
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Championship championship = resultSetToEntity(rs);
                 championships.add(championship);
             }
