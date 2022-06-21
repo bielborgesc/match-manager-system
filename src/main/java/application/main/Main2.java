@@ -1,6 +1,7 @@
 package application.main;
 
 import application.repository.inmemory.*;
+import application.repository.sqlite.DatabaseBuilder;
 import domain.entities.championship.CategoryEnum;
 import domain.entities.championship.Championship;
 import domain.entities.championship.TypeEnum;
@@ -85,12 +86,11 @@ public class Main2{
 
 
         //Gerando Campeonato
-        List<Score> resultTable = generateTurnAndReturnChampionshipUseCase.generateResult(1);
-        System.out.println(resultTable);
+//        List<Score> resultTable = generateTurnAndReturnChampionshipUseCase.generateResult(1);
+//        System.out.println(resultTable);
 
 
     }
-
 
     private static void configureInjection() {
         TeamDAO teamDAO = new InMemoryTeamDAO();
