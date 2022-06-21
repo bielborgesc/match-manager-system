@@ -22,6 +22,7 @@ import domain.entities.team.Team;
 import static application.main.Main.*;
 
 public class TeamsUserUIController implements Initializable {
+
     private ObservableList<Team> teamList;
 
     @FXML
@@ -35,7 +36,6 @@ public class TeamsUserUIController implements Initializable {
         List<Team> list = findTeamUseCase.findAll();
         teamList = FXCollections.observableArrayList(list);
         tableViewTeam.setItems(teamList);
-        ;
     }
 
     @FXML

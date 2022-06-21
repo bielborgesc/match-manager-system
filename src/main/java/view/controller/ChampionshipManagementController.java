@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import domain.entities.championship.CategoryEnum;
 import domain.entities.championship.Championship;
 import domain.entities.championship.TypeEnum;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,10 +27,7 @@ import static application.main.Main.*;
 
 public class ChampionshipManagementController implements Initializable {
 
-
-
     private ObservableList<Championship> championshipsList;
-
 
     @FXML
     private TableView<Championship> tableViewChampionships;
@@ -37,7 +35,7 @@ public class ChampionshipManagementController implements Initializable {
     private TableColumn<Championship, Integer> tColumnID;
     @FXML
     private TableColumn<Championship, String> tColumnName;
-    
+
     SimpleDateFormat dateFormat;
     @FXML
     private TableColumn<Championship, Date> tColumnData;
@@ -45,6 +43,8 @@ public class ChampionshipManagementController implements Initializable {
     private TableColumn<Championship, TypeEnum> tColumnSport;
     @FXML
     private TableColumn<Championship, CategoryEnum> tColumnType;
+    @FXML
+    private TableColumn<Championship, Championship> tColumnEdit;
 
     @FXML
     private Button btVoltar;
@@ -57,50 +57,51 @@ public class ChampionshipManagementController implements Initializable {
     @FXML
     private Button btNovo;
 
-
-
     @FXML
     private void onbtVoltar(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
-    @FXML
-    private void onbtDeletar() {
-        
-    }
 
     @FXML
-    private void onbtDetalhar() {
-        
+    private void onbtNovo(ActionEvent event) {
+
     }
 
-    @FXML
-    private void onbtEditar() {
-        
-    }
-
-    @FXML
-    private void onbtNovo() {
-        
-    }
-
-
-
-    public void updateTableView(){
+    public void updateTableView() {
         List<Championship> list = findChampionshipUseCase.findAll();
         championshipsList = FXCollections.observableArrayList(list);
         tableViewChampionships.setItems(championshipsList);
     }
 
+    private void initEditButtons() {
+        tColumnEdit.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tColumnEdit.setCellFactory(param -> new TableCell<Championship, Championship>() {
+            private final Button button = new Button(" Editar ");
+
+            @Override
+            protected void updateItem(Championship obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(
+                        event -> System.out.println("Table edit"));
+            }
+        });
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initializeNodes();
+        initEditButtons();
         updateTableView();
-    }    
+    }
 
-    private void initializeNodes(){
+    private void initializeNodes() {
         tColumnID.setCellValueFactory(new PropertyValueFactory<>("id"));
         tColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tColumnData.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -109,20 +110,19 @@ public class ChampionshipManagementController implements Initializable {
         tColumnData.setCellFactory(column -> {
             TableCell<Championship, Date> cell = new TableCell<Championship, Date>() {
                 private SimpleDateFormat format = new SimpleDateFormat("dd / MM / yyyy");
-    
+
                 @Override
                 protected void updateItem(Date item, boolean empty) {
                     super.updateItem(item, empty);
-                    if(empty) {
+                    if (empty) {
                         setText(null);
-                    }
-                    else {
+                    } else {
                         this.setText(format.format(item));
-    
+
                     }
                 }
             };
-    
+
             return cell;
         });
     }
