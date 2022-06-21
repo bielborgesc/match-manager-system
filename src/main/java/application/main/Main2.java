@@ -16,14 +16,9 @@ import domain.usecases.round.*;
 import domain.usecases.score.*;
 import domain.usecases.team.*;
 import domain.utils.exceptions.EntityAlreadyExistsException;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 public class Main2{
     private static CreateTeamUseCase createTeamUseCase;
@@ -86,11 +81,13 @@ public class Main2{
         findChampionshipUseCase.findOne(1).orElseThrow().addChampionshipTeams(findTeamUseCase.findOne(2).orElseThrow());
         findChampionshipUseCase.findOne(1).orElseThrow().addChampionshipTeams(findTeamUseCase.findOne(3).orElseThrow());
         findChampionshipUseCase.findOne(1).orElseThrow().addChampionshipTeams(findTeamUseCase.findOne(4).orElseThrow());
+        findChampionshipUseCase.findOne(1).orElseThrow().addChampionshipTeams(findTeamUseCase.findOne(5).orElseThrow());
 
 
         //Gerando Campeonato
-        Championship championship = generateTurnAndReturnChampionshipUseCase.generate(1);
-//        System.out.println(championship.getRounds());
+        List<Score> resultTable = generateTurnAndReturnChampionshipUseCase.generateResult(1);
+        System.out.println(resultTable);
+
 
     }
 
@@ -123,7 +120,7 @@ public class Main2{
         addRoundInChampionshipUseCase = new AddRoundInChampionshipUseCase(roundDAO, championshipDAO);
         createChampionshipUseCase = new CreateChampionshipUseCase(championshipDAO);
         findChampionshipUseCase = new FindChampionshipUseCase(championshipDAO);
-        generateTurnAndReturnChampionshipUseCase = new GenerateTurnAndReturnChampionshipUseCase(championshipDAO);
+        generateTurnAndReturnChampionshipUseCase = new GenerateTurnAndReturnChampionshipUseCase(championshipDAO, scoreDAO);
 
 
         AdminDAO adminDAO = new InMemoryAdminDAO();
