@@ -21,7 +21,7 @@ This project was carried out in my Object-Oriented Development discipline. The s
 To execute this program, simply extract this repository to your machine and use [IntelliJ](https://www.jetbrains.com/pt-br/idea/) to compile and run the program.
 
 ## :raising_hand_man: Developers
-Gabriel Carvalho
-Jackson de Almeida
-Amadeu José
-Fagner Viana
+- Gabriel Carvalho
+- Jackson de Almeida
+- Amadeu José
+- Fagner Viana
